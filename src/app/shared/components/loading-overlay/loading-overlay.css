@@ -1,0 +1,28 @@
+.loading-overlay {
+  @apply fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-bg/95 backdrop-blur-sm;
+}
+
+.loading-overlay__compass {
+  @apply size-24;
+  animation: loading-overlay-spin 1.1s linear infinite;
+}
+
+@keyframes loading-overlay-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-overlay__label {
+  @apply font-mono text-xs uppercase tracking-[0.14em] text-accent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-overlay__compass {
+    animation: none;
+  }
+}

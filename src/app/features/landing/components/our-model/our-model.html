@@ -1,0 +1,42 @@
+<section id="model" class="model" aria-labelledby="model-heading">
+  <div class="model__intro">
+    <img
+      class="model__image"
+      [ngSrc]="storefrontImage"
+      width="403"
+      height="247"
+      priority
+      alt="Indoor digital billboard installed above a storefront in a busy shopping strip"
+    />
+
+    <div class="model__copy">
+      <nctv-eyebrow-badge label="Our model" />
+      <h2 id="model-heading" class="model__heading">One dealership. Several ways it pays you.</h2>
+      <p class="model__paragraph">
+        The dealership model provides the resources and exclusive territory to launch a local
+        digital marketing business centered around
+        <span class="model__paragraph--accent">indoor digital billboards in high-traffic community spots</span>.
+        Beyond screen rentals, you can offer managed marketing services to build a predictable,
+        <span class="model__paragraph--accent">recurring revenue stream</span>
+        instead of relying on one-off sales.
+      </p>
+    </div>
+  </div>
+
+  <div class="model__journey">
+    <div class="model__journey-copy">
+      <nctv-eyebrow-badge label="Our journey" />
+      <h2 class="model__heading">Built on a track record, not a pitch deck.</h2>
+      <p class="model__paragraph">
+        Since 2008, the network has grown one dealer-owned market at a time — turning indoor
+        screens into a shared, community-focused local advertising channel across the country.
+      </p>
+    </div>
+
+    <div class="model__journey-grid">
+      @for (stat of journeyStats; track stat.label) {
+        <nctv-stat-card [stat]="stat" variant="card" />
+      }
+    </div>
+  </div>
+</section>

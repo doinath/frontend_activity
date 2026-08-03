@@ -1,0 +1,17 @@
+@if (href(); as link) {
+  <a
+    [href]="link"
+    class="pill-button"
+    [class.pill-button--outline]="variant() === 'outline'"
+  >
+    {{ label() }}
+  </a>
+} @else {
+  <button
+    [type]="isSubmit() ? 'submit' : 'button'"
+    class="pill-button"
+    [class.pill-button--outline]="variant() === 'outline'"
+  >
+    {{ label() }}
+  </button>
+}

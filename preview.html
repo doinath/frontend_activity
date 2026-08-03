@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>N-Compass TV — Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0f0f0f; --surface:#15171a; --border:rgba(232,238,248,.1); --border-soft:rgba(232,238,248,.08);
+    --border-strong:rgba(232,238,248,.18); --accent:#92c74d; --heading:#edf1f8; --body:#9fb0cc; --muted:#6b7688;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--heading);font-family:Inter,sans-serif}
+  h1,h2{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.01em;margin:0}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .eyebrow .dot{width:6px;height:6px;border-radius:99px;background:var(--accent)}
+  .pill-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:25px;background:var(--accent);color:#04211c;font-weight:600;font-size:14.5px;padding:14px 26px;transition:transform .15s ease}
+  .pill-btn:hover{transform:translateY(-2px)}
+  .pill-btn.outline{border:1px solid rgba(0,0,0,.8)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:30;background:rgba(15,15,15,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+  header.site .wrap{height:103px;display:flex;align-items:center}
+  .logo{display:inline-flex;align-items:center;gap:8px}
+  .logo svg{width:24px;height:24px;color:var(--accent)}
+  .logo .word{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:500}
+  .logo .tag{background:var(--accent);color:#04211c;font-size:10px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+
+  /* section nav rail */
+  .section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:40;display:flex;align-items:center;gap:12px}
+  @media (max-width:1023px){.section-nav{display:none}}
+  .section-nav .pill{border-radius:25px;background:var(--accent);color:#141f38;font-size:13px;font-weight:600;padding:6px 16px;white-space:nowrap}
+  .section-nav .rail{display:flex;flex-direction:column;align-items:center;gap:4px;border-radius:28px;border:1px solid var(--border);background:rgba(25,26,29,.84);padding:6px}
+  .section-nav .rail a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:99px;font-size:12px;font-weight:600;color:#9ca6c4}
+  .section-nav .rail a.active{background:var(--accent);color:#141f38}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;padding:96px 32px}
+  .hero .ring{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:280px;height:280px;border-radius:99px;border:10px solid rgba(146,199,77,.7);display:none;animation:spin 18s linear infinite}
+  .hero .ring::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:40px;background:rgba(146,199,77,.7);border-radius:4px;transform:translate(-50%,-50%)}
+  @keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+  @media (min-width:768px){.hero .ring{display:block}}
+  .hero .content{position:relative;z-index:1;max-width:700px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+  .hero h1{font-size:42px;line-height:1.05;color:var(--heading)}
+  @media (min-width:768px){.hero h1{font-size:58px}}
+  .hero h1 .accent{color:var(--accent)}
+  .hero .lede{max-width:560px;font-size:17.5px;line-height:1.6;color:var(--body)}
+  .hero .actions{display:flex;flex-wrap:wrap;gap:14px}
+  .hero .stats{margin-top:16px;display:flex;flex-wrap:wrap;gap:44px;border-top:1px solid var(--border);padding-top:32px;width:100%}
+  .stat-inline .value{font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--heading)}
+  .stat-inline .label{font-size:12.5px;color:var(--body)}
+
+  /* model */
+  .model{padding:96px 32px;display:flex;flex-direction:column;gap:64px}
+  .model .intro{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+  @media (min-width:768px){.model .intro{grid-template-columns:1fr 1fr}}
+  .model img{width:100%;height:auto;border-radius:26px;object-fit:cover;box-shadow:0 0 2px 5px var(--accent)}
+  .model .copy{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+  .model h2{font-size:32px;color:var(--accent);line-height:1.2}
+  .model .paragraph{font-size:15.5px;line-height:1.6;color:#fff}
+  .model .paragraph .accent{color:var(--accent)}
+  .model .journey{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+  @media (min-width:768px){.model .journey{grid-template-columns:1fr 1fr}}
+  .model .journey h2{font-size:38px}
+  .model .journey .paragraph{max-width:420px;font-size:16.5px}
+  .journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-radius:25px;border:1px solid var(--border-soft);background:var(--surface);padding:24px;text-align:center}
+  .stat-card .value{font-family:'IBM Plex Mono',monospace;font-size:34px;color:var(--accent)}
+  .stat-card .label{font-size:13px;color:var(--muted)}
+
+  /* services */
+  .services{padding:96px 32px;display:flex;flex-direction:column;align-items:center;gap:64px;text-align:center}
+  .services .intro{max-width:640px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .services h2{font-size:38px;color:var(--accent);line-height:1.2}
+  .services .paragraph{font-size:16.5px;line-height:1.6;color:#fff}
+  .services-grid{display:grid;grid-template-columns:1fr;gap:14px;width:100%}
+  @media (min-width:640px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+  .service-card{display:flex;flex-direction:column;align-items:center;gap:16px;border-radius:16px;border:1px solid var(--border);background:var(--surface);padding:24px}
+  .service-card .tag{display:inline-flex;align-items:center;gap:8px;border-radius:25px;border:1px solid var(--border);background:rgba(15,15,15,.7);padding:6px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent)}
+  .service-card .tag .dot{width:5px;height:5px;border-radius:99px;background:var(--accent)}
+  .service-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px;font-weight:600;color:#fff;text-align:center}
+
+  /* podcast */
+  .podcast{padding:96px 32px;display:grid;grid-template-columns:1fr;gap:56px;align-items:center}
+  @media (min-width:768px){.podcast{grid-template-columns:1fr 1fr}}
+  .player{position:relative;aspect-ratio:1/1;border-radius:8px;border:1px solid var(--border-strong);background:linear-gradient(115deg,#141a14 15%,#080908 90%);padding:20px;display:flex;flex-direction:column;justify-content:flex-end}
+  .player .tag{position:absolute;left:20px;top:20px;display:inline-flex;align-items:center;gap:8px;border-radius:25px;border:1px solid var(--border);background:rgba(15,15,15,.7);padding:6px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent)}
+  .player .tag .dot{width:6px;height:6px;border-radius:99px;background:var(--accent)}
+  .player .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:99px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent);background:transparent;cursor:pointer}
+  .player .play svg{width:16px;height:16px;margin-left:2px}
+  .waveform{display:flex;align-items:flex-end;gap:4px}
+  .waveform span{width:3px;border-radius:2px;background:rgba(146,199,77,.6)}
+  .player .caption{margin-top:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85)}
+  .podcast .copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .podcast h2{font-size:30px;color:var(--heading)}
+  .podcast .paragraph{max-width:480px;font-size:15.5px;line-height:1.6;color:var(--body)}
+  .podcast-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+  .podcast-link{display:inline-flex;align-items:center;gap:10px;border-radius:25px;padding:14px 26px;font-size:14.5px;font-weight:600;color:#fff;border:1px solid}
+  .podcast-link .dot{width:8px;height:8px;border-radius:99px;background:#fff}
+  .podcast-link.spotify{background:#1db954;border-color:rgba(29,185,84,.45)}
+  .podcast-link.apple{background:#fa2d48;border-color:rgba(250,45,72,.45)}
+  .podcast .meta{font-size:13px;color:var(--body)}
+
+  /* contact */
+  .contact{padding:96px 32px;display:grid;grid-template-columns:1fr;gap:64px}
+  @media (min-width:768px){.contact{grid-template-columns:1fr 1fr}}
+  .contact .details{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .contact h2{font-size:32px;color:var(--heading)}
+  .contact .paragraph{max-width:420px;font-size:15px;line-height:1.6;color:var(--body)}
+  .info-row{display:flex;align-items:baseline;gap:14px}
+  .info-row dt{width:80px;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--accent);letter-spacing:.06em}
+  .info-row dd{margin:0;font-size:14.5px;color:var(--heading)}
+  dl.info{display:flex;flex-direction:column;gap:12px;margin:8px 0 0}
+  .social-row{display:flex;gap:10px;margin-top:8px;list-style:none;padding:0}
+  .social-row a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:99px;border:1px solid var(--border-strong);color:var(--body);font-size:12px}
+  form.contact-form{display:flex;flex-direction:column;gap:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface);padding:36px}
+  .field-row{display:grid;grid-template-columns:1fr;gap:16px}
+  @media (min-width:480px){.field-row{grid-template-columns:1fr 1fr}}
+  label.field{display:flex;flex-direction:column;gap:6px}
+  label.field span{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.05em;color:var(--accent)}
+  .input, textarea.input{border-radius:4px;border:1px solid var(--border-strong);background:rgba(255,255,255,.04);color:var(--heading);padding:13px 15px;font-size:14.5px;font-family:inherit}
+  textarea.input{min-height:95px;resize:vertical}
+  .input::placeholder, textarea::placeholder{color:rgba(237,241,248,.55)}
+  form .pill-btn{margin-top:4px;width:100%;border:none;cursor:pointer}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border)}
+  .footer-inner{display:flex;flex-direction:column;gap:36px;padding:40px 32px}
+  .footer-top{display:flex;flex-direction:column;gap:32px;align-items:flex-start;justify-content:space-between}
+  @media (min-width:768px){.footer-top{flex-direction:row;align-items:flex-end}}
+  .footer-brand{display:flex;flex-direction:column;gap:14px;max-width:360px}
+  .footer-brand p{font-size:13.5px;line-height:1.6;color:#a8a8a8}
+  .footer-nav{display:flex;flex-wrap:wrap;gap:28px}
+  .footer-nav a{font-size:13.5px;color:#d4d4d4}
+  .footer-bottom{display:flex;flex-direction:column;gap:16px;align-items:center;border-top:1px solid rgba(255,255,255,.8);padding-top:24px}
+  @media (min-width:640px){.footer-bottom{flex-direction:row;justify-content:space-between}}
+  .footer-bottom p{font-size:12.5px;color:#fff}
+  .footer-social{display:flex;gap:24px;font-size:12.5px;color:#fff;list-style:none;margin:0;padding:0}
+
+  section[id]{scroll-margin-top:96px}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#hero" aria-label="N-Compass TV home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z" fill="currentColor"/></svg>
+      <span class="word">n&middot;compass</span>
+      <span class="tag">tv</span>
+    </a>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Section navigation">
+  <a class="pill" id="active-pill" href="#hero">Home</a>
+  <div class="rail">
+    <a href="#hero" data-label="Home">H</a>
+    <a href="#model" data-label="Model">M</a>
+    <a href="#services" data-label="Services">S</a>
+    <a href="#podcast" data-label="Podcast">P</a>
+    <a href="#contact" data-label="Contact">C</a>
+  </div>
+</nav>
+
+<main>
+  <section id="hero" class="hero" aria-label="Introduction">
+    <div class="ring" aria-hidden="true"></div>
+    <div class="content">
+      <span class="eyebrow"><span class="dot"></span>Indoor digital billboard dealerships</span>
+      <h1>Advertising that lives where your <span class="accent">community</span> already stands in line.</h1>
+      <p class="lede">Own and operate a network of indoor digital billboards across your town — gyms, clinics, restaurants, salons — with a proven playbook, low overhead, and a business built to layer on new revenue as it grows.</p>
+      <div class="actions">
+        <a class="pill-btn" href="#model">See how the model works</a>
+        <a class="pill-btn outline" href="#contact">Book a call</a>
+      </div>
+      <div class="stats">
+        <div class="stat-inline"><p class="value">4,000+</p><p class="label">Screens live nationwide</p></div>
+        <div class="stat-inline"><p class="value">250+</p><p class="label">Cities in the network</p></div>
+        <div class="stat-inline"><p class="value">2008</p><p class="label">Network founded</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="model" class="model" aria-label="Our model">
+    <div class="intro">
+      <img src="https://www.figma.com/api/mcp/asset/e6e81f8a-62a6-482a-be45-6127bbda4b52" alt="Indoor digital billboard installed above a storefront" />
+      <div class="copy">
+        <span class="eyebrow"><span class="dot"></span>Our model</span>
+        <h2>One dealership. Several ways it pays you.</h2>
+        <p class="paragraph">The dealership model provides the resources and exclusive territory to launch a local digital marketing business centered around <span class="accent">indoor digital billboards in high-traffic community spots</span>. Beyond screen rentals, you can offer managed marketing services to build a predictable, <span class="accent">recurring revenue stream</span> instead of relying on one-off sales.</p>
+      </div>
+    </div>
+    <div class="journey">
+      <div class="copy">
+        <span class="eyebrow"><span class="dot"></span>Our journey</span>
+        <h2>Built on a track record, not a pitch deck.</h2>
+        <p class="paragraph">Since 2008, the network has grown one dealer-owned market at a time — turning indoor screens into a shared, community-focused local advertising channel across the country.</p>
+      </div>
+      <div class="journey-grid">
+        <div class="stat-card"><p class="value">4,000+</p><p class="label">Screens on the network</p></div>
+        <div class="stat-card"><p class="value">250+</p><p class="label">Cities represented</p></div>
+        <div class="stat-card"><p class="value">17</p><p class="label">Years operating</p></div>
+        <div class="stat-card"><p class="value">8</p><p class="label">Service lines available</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services" aria-label="Services">
+    <div class="intro">
+      <span class="eyebrow"><span class="dot"></span>Go beyond the screens</span>
+      <h2>A full-scale marketing agency, not just a billboard.</h2>
+      <p class="paragraph">Every screen account can grow into a true omni-channel engagement. Work is handled in-house, with reporting and a monthly strategy call built in — so clients see the results and keep raising their spend.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="tag"><span class="dot"></span>FOUNDATIONAL</span>
+        <ul><li>Google Business Profile</li><li>Social media management</li><li>Website development</li></ul>
+      </div>
+      <div class="service-card">
+        <span class="tag"><span class="dot"></span>LEAD GEN</span>
+        <ul><li>Social advertising</li><li>Pay-per-click</li></ul>
+      </div>
+      <div class="service-card">
+        <span class="tag"><span class="dot"></span>BRANDING</span>
+        <ul><li>Display advertising</li><li>OTT / CTV advertising</li><li>Streaming audio</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="podcast" class="podcast" aria-label="Podcast">
+    <article class="player">
+      <span class="tag"><span class="dot"></span>EPISODE 24</span>
+      <button class="play" aria-label="Play episode 24"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+      <div class="waveform" aria-hidden="true"></div>
+      <p class="caption">Why local screens win — 42 min</p>
+    </article>
+    <div class="copy">
+      <span class="eyebrow"><span class="dot"></span>Listen in</span>
+      <h2>The dealer podcast</h2>
+      <p class="paragraph">Conversations for advertisers, media owners, and anyone curious about the world of digital-out-of-home — an honest look at what makes local screen networks work, told by the people building them.</p>
+      <div class="podcast-links">
+        <a class="podcast-link spotify" href="#"><span class="dot"></span>Listen on Spotify</a>
+        <a class="podcast-link apple" href="#"><span class="dot"></span>Listen on Apple</a>
+      </div>
+      <p class="meta">40+ episodes &middot; new drops every month</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-label="Contact">
+    <div class="details">
+      <span class="eyebrow"><span class="dot"></span>Contact us</span>
+      <h2>Let's talk about your market.</h2>
+      <p class="paragraph">Fill out the form and our team will reach out to schedule a call and walk you through the opportunity in your area.</p>
+      <dl class="info">
+        <div class="info-row"><dt>Address</dt><dd>Suite 100, Lakewood, CO</dd></div>
+        <div class="info-row"><dt>Phone</dt><dd>(720) 555-0142</dd></div>
+        <div class="info-row"><dt>Email</dt><dd>hello@example.com</dd></div>
+      </dl>
+      <ul class="social-row">
+        <li><a href="#" aria-label="Facebook">f</a></li>
+        <li><a href="#" aria-label="Instagram">ig</a></li>
+        <li><a href="#" aria-label="LinkedIn">in</a></li>
+      </ul>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <label class="field"><span>Full name</span><input class="input" type="text" placeholder="Jordan Rivera" /></label>
+      <div class="field-row">
+        <label class="field"><span>Email</span><input class="input" type="email" placeholder="jordan@email.com" /></label>
+        <label class="field"><span>Phone</span><input class="input" type="tel" placeholder="(555) 000-0000" /></label>
+      </div>
+      <label class="field"><span>Market</span><input class="input" type="text" placeholder="e.g. Boise, ID" /></label>
+      <label class="field"><span>Message</span><textarea class="input" placeholder="What are you looking for?"></textarea></label>
+      <button class="pill-btn" type="submit">Request a call</button>
+    </form>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="footer-inner wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#hero" aria-label="N-Compass TV home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z" fill="currentColor"/></svg>
+          <span class="word">n&middot;compass</span><span class="tag">tv</span>
+        </a>
+        <p>Indoor digital billboards in restaurants, gyms, clinics, and more — seen wherever your customers already go.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#hero">Home</a><a href="#model">Model</a><a href="#services">Services</a><a href="#podcast">Podcast</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; N-Compass TV 2026 &middot; Privacy Policy</p>
+      <ul class="footer-social"><li><a href="#">LinkedIn</a></li><li><a href="#">X</a></li><li><a href="#">YouTube</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Waveform bars (mirrors the Angular @for loop over a heights array).
+  var heights = [10,18,26,14,22,30,16,24,12,20,28,18,10,24,16];
+  var wave = document.querySelector('.waveform');
+  heights.forEach(function(h){
+    var bar = document.createElement('span');
+    bar.style.height = h + 'px';
+    wave.appendChild(bar);
+  });
+
+  // Scroll-spy for the section-nav rail, mirroring SectionNav's onWindowScroll().
+  var railLinks = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var pill = document.getElementById('active-pill');
+  var sections = railLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+
+  function updateActive() {
+    var center = window.innerHeight / 2;
+    var closest = null, closestDistance = Infinity, closestLink = null;
+    sections.forEach(function(section, i){
+      if (!section) return;
+      var rect = section.getBoundingClientRect();
+      var distance = Math.abs(rect.top + rect.height / 2 - center);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closest = section;
+        closestLink = railLinks[i];
+      }
+    });
+    railLinks.forEach(function(a){ a.classList.remove('active'); });
+    if (closestLink) {
+      closestLink.classList.add('active');
+      pill.textContent = closestLink.dataset.label;
+      pill.setAttribute('href', closestLink.getAttribute('href'));
+    }
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>
+</body>
+</html>

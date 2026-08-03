@@ -1,0 +1,11 @@
+.eyebrow {
+  @apply inline-flex items-center gap-2;
+}
+
+.eyebrow__dot {
+  @apply size-1.5 rounded-full bg-accent shrink-0;
+}
+
+.eyebrow__label {
+  @apply font-mono text-xs uppercase tracking-[0.14em] text-accent;
+}

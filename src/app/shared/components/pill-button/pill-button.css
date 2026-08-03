@@ -1,0 +1,11 @@
+.pill-button {
+  @apply inline-flex items-center justify-center rounded-pill bg-accent px-6 py-3.5 text-[14.5px] font-semibold text-[#04211c] transition-transform;
+}
+
+.pill-button:hover {
+  @apply -translate-y-0.5;
+}
+
+.pill-button--outline {
+  @apply border border-black/80 bg-accent text-black;
+}

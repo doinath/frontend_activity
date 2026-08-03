@@ -1,0 +1,29 @@
+<nav class="section-nav" aria-label="Section navigation">
+  <div class="section-nav__rail-wrap">
+    @if (activeLink(); as active) {
+      <a
+        class="section-nav__pill"
+        [class.section-nav__pill--visible]="isVisible()"
+        [style.top.px]="pillOffsetPx()"
+        [href]="active.path"
+      >
+        {{ active.label }}
+      </a>
+    }
+    <ul class="section-nav__rail">
+      @for (link of links(); track link.path) {
+        <li>
+          <a
+            [href]="link.path"
+            class="section-nav__dot"
+            [class.section-nav__dot--active]="activeLink()?.path === link.path"
+            [attr.aria-current]="activeLink()?.path === link.path ? 'true' : null"
+            [attr.aria-label]="link.label"
+          >
+            {{ link.icon }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,38 @@
+.hero {
+  @apply relative mx-auto max-w-[1180px] overflow-hidden bg-bg px-8 py-24;
+}
+
+.hero__ring {
+  @apply pointer-events-none absolute right-[8%] top-1/2 hidden size-72 -translate-y-1/2 object-contain md:block;
+  animation: hero-ring-spin 18s linear infinite;
+}
+
+@keyframes hero-ring-spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+.hero__content {
+  @apply relative z-10 flex max-w-[700px] flex-col items-start gap-6;
+}
+
+.hero__heading {
+  @apply font-display text-[42px] font-semibold leading-[1.05] tracking-tight text-heading md:text-[58px];
+}
+
+.hero__heading--accent {
+  @apply text-accent;
+}
+
+.hero__paragraph {
+  @apply max-w-[560px] text-[17.5px] leading-[1.6] text-body;
+}
+
+.hero__actions {
+  @apply flex flex-wrap gap-3.5;
+}
+
+.hero__stats {
+  @apply mt-4 flex w-full flex-wrap gap-11 border-t border-border pt-8;
+}

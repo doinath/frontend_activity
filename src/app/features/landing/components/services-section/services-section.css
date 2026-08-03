@@ -1,0 +1,35 @@
+.services {
+  @apply mx-auto flex max-w-[1180px] flex-col items-center gap-16 px-8 py-24 text-center;
+}
+
+.services__intro {
+  @apply flex max-w-[640px] flex-col items-center gap-4;
+}
+
+.services__heading {
+  @apply font-display text-[38px] font-semibold leading-tight tracking-tight text-accent;
+}
+
+.services__paragraph {
+  @apply text-[16.5px] leading-[1.6] text-white;
+}
+
+.services__grid {
+  @apply grid w-full grid-cols-1 gap-3.5 sm:grid-cols-3;
+}
+
+.services__card {
+  @apply flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6;
+}
+
+.services__tag {
+  @apply inline-flex items-center gap-2 rounded-pill border border-border bg-bg/70 px-3 py-1.5 font-mono text-[10px] tracking-[0.12em] text-accent;
+}
+
+.services__tag-dot {
+  @apply size-1 rounded-full bg-accent;
+}
+
+.services__list {
+  @apply flex flex-col items-center gap-2.5 text-[15px] font-semibold text-white;
+}

@@ -1,0 +1,7 @@
+.site-header {
+  @apply sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur;
+}
+
+.site-header__inner {
+  @apply mx-auto flex h-[103px] max-w-[1180px] items-center justify-center px-8;
+}

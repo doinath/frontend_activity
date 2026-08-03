@@ -1,0 +1,71 @@
+.contact {
+  @apply mx-auto grid max-w-[1180px] grid-cols-1 gap-16 px-8 py-24 md:grid-cols-2;
+}
+
+.contact__details {
+  @apply flex flex-col items-start gap-4;
+}
+
+.contact__heading {
+  @apply font-display text-[32px] font-semibold tracking-tight text-heading;
+}
+
+.contact__paragraph {
+  @apply max-w-[420px] text-[15px] leading-[1.6] text-body;
+}
+
+.contact__info {
+  @apply mt-2 flex flex-col gap-3;
+}
+
+.contact__info-row {
+  @apply flex items-baseline gap-3.5;
+}
+
+.contact__info-row dt {
+  @apply w-20 shrink-0 font-mono text-[11px] uppercase tracking-[0.06em] text-accent;
+}
+
+.contact__info-row dd {
+  @apply text-[14.5px] text-heading;
+}
+
+.contact__social {
+  @apply mt-2 flex gap-2.5;
+}
+
+.contact__social-link {
+  @apply flex size-8 items-center justify-center rounded-full border border-border-strong text-body;
+}
+
+.contact__social-icon {
+  @apply size-3.5;
+}
+
+.contact__form {
+  @apply flex flex-col gap-4 rounded-lg border border-border bg-surface p-9;
+}
+
+.contact__success {
+  @apply rounded-md border border-accent/40 bg-accent/10 px-4 py-2 text-sm text-accent;
+}
+
+.contact__field-row {
+  @apply grid grid-cols-1 gap-4 sm:grid-cols-2;
+}
+
+.contact__field {
+  @apply flex flex-col gap-1.5;
+}
+
+.contact__label {
+  @apply font-mono text-[12.5px] tracking-[0.05em] text-accent;
+}
+
+.contact__input {
+  @apply rounded border border-border-strong bg-white/[0.04] px-4 py-3 text-[14.5px] text-heading placeholder:text-heading/55;
+}
+
+.contact__input--area {
+  @apply min-h-[95px] resize-y;
+}

@@ -1,0 +1,14 @@
+@if (isLoading()) {
+  <div class="loading-overlay" role="status" aria-live="polite">
+    <img
+      class="loading-overlay__compass"
+      ngSrc="assets/compass.png"
+      width="354"
+      height="354"
+      priority
+      alt=""
+      aria-hidden="true"
+    />
+    <p class="loading-overlay__label">Taking you there&hellip;</p>
+  </div>
+}

@@ -1,0 +1,47 @@
+.model {
+  @apply mx-auto flex max-w-[1180px] flex-col gap-16 px-8 py-24;
+}
+
+.model__intro {
+  @apply grid grid-cols-1 items-center gap-10 md:grid-cols-2;
+}
+
+.model__image {
+  @apply h-auto w-full rounded-[26px] object-cover shadow-[0_0_2px_5px_theme(colors.accent)];
+}
+
+.model__copy {
+  @apply flex flex-col items-start gap-4;
+}
+
+.model__heading {
+  @apply font-display text-[32px] font-semibold leading-tight tracking-tight text-accent;
+}
+
+.model__paragraph {
+  @apply text-[15.5px] leading-[1.6] text-white;
+}
+
+.model__paragraph--accent {
+  @apply text-accent;
+}
+
+.model__journey {
+  @apply grid grid-cols-1 items-center gap-10 md:grid-cols-2;
+}
+
+.model__journey-copy {
+  @apply flex flex-col items-start gap-4;
+}
+
+.model__journey .model__heading {
+  @apply text-[38px];
+}
+
+.model__journey .model__paragraph {
+  @apply max-w-[420px] text-[16.5px] text-white;
+}
+
+.model__journey-grid {
+  @apply grid grid-cols-2 gap-2.5;
+}

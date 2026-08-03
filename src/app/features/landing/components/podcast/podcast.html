@@ -1,0 +1,47 @@
+<section id="podcast" class="podcast" aria-labelledby="podcast-heading">
+  <article class="podcast__player">
+    <span class="podcast__tag">
+      <span class="podcast__tag-dot" aria-hidden="true"></span>
+      EPISODE 24
+    </span>
+
+    <button type="button" class="podcast__play" aria-label="Play episode 24: Why local screens win">
+      <svg class="podcast__play-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <use href="assets/icons/icon-sprite.svg#icon-play" />
+      </svg>
+    </button>
+
+    <div class="podcast__waveform" aria-hidden="true">
+      @for (height of waveform; track $index) {
+        <span class="podcast__wave-bar" [style.height.px]="height"></span>
+      }
+    </div>
+    <p class="podcast__caption">Why local screens win — 42 min</p>
+  </article>
+
+  <div class="podcast__copy">
+    <nctv-eyebrow-badge label="Listen in" />
+    <h2 id="podcast-heading" class="podcast__heading">The dealer podcast</h2>
+    <p class="podcast__paragraph">
+      Conversations for advertisers, media owners, and anyone curious about the world of
+      digital-out-of-home — an honest look at what makes local screen networks work, told by the
+      people building them.
+    </p>
+
+    <div class="podcast__links">
+      @for (link of links; track link.platform) {
+        <a
+          [href]="link.href"
+          class="podcast__link"
+          [class.podcast__link--spotify]="link.platform === 'spotify'"
+          [class.podcast__link--apple]="link.platform === 'apple'"
+          (click)="onLinkClick($event, link)"
+        >
+          <span class="podcast__link-dot" aria-hidden="true"></span>
+          {{ link.label }}
+        </a>
+      }
+    </div>
+    <p class="podcast__meta">40+ episodes &middot; new drops every month</p>
+  </div>
+</section>

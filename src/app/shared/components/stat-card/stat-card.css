@@ -1,0 +1,23 @@
+.stat {
+  @apply flex flex-col items-start gap-1;
+}
+
+.stat--card {
+  @apply items-center justify-center gap-2 rounded-[25px] border border-border-soft bg-surface p-6 text-center;
+}
+
+.stat__value {
+  @apply font-mono text-[26px] text-heading;
+}
+
+.stat--card .stat__value {
+  @apply text-[34px] text-accent;
+}
+
+.stat__label {
+  @apply text-[12.5px] text-body;
+}
+
+.stat--card .stat__label {
+  @apply text-muted;
+}

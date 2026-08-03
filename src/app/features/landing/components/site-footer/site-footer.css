@@ -1,0 +1,39 @@
+.footer {
+  @apply border-t border-border bg-bg;
+}
+
+.footer__inner {
+  @apply mx-auto flex max-w-[1180px] flex-col gap-9 px-8 py-10;
+}
+
+.footer__top {
+  @apply flex flex-col items-start justify-between gap-8 md:flex-row md:items-end;
+}
+
+.footer__brand {
+  @apply flex max-w-[360px] flex-col gap-3.5;
+}
+
+.footer__tagline {
+  @apply text-[13.5px] leading-[1.6] text-[#a8a8a8];
+}
+
+.footer__nav {
+  @apply flex flex-wrap gap-7;
+}
+
+.footer__nav-link {
+  @apply text-[13.5px] text-[#d4d4d4];
+}
+
+.footer__bottom {
+  @apply flex flex-col items-center gap-4 border-t border-white/80 pt-6 sm:flex-row sm:justify-between;
+}
+
+.footer__legal {
+  @apply text-[12.5px] text-white;
+}
+
+.footer__social {
+  @apply flex gap-6 text-[12.5px] text-white;
+}

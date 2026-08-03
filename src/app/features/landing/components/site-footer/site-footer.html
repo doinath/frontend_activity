@@ -1,0 +1,28 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <nctv-logo variant="compact" />
+        <p class="footer__tagline">
+          Indoor digital billboards in restaurants, gyms, clinics, and more — seen wherever your
+          customers already go.
+        </p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        @for (link of navLinks; track link.path) {
+          <a [href]="link.path" class="footer__nav-link">{{ link.label }}</a>
+        }
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__legal">&copy; N-Compass TV {{ year }} &middot; Privacy Policy</p>
+      <ul class="footer__social">
+        @for (link of socialLinks; track link.label) {
+          <li><a [href]="link.href">{{ link.label }}</a></li>
+        }
+      </ul>
+    </div>
+  </div>
+</footer>

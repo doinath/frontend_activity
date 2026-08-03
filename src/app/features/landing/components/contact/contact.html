@@ -1,0 +1,75 @@
+<section id="contact" class="contact" aria-labelledby="contact-heading">
+  <div class="contact__details">
+    <nctv-eyebrow-badge label="Contact us" />
+    <h2 id="contact-heading" class="contact__heading">Let's talk about your market.</h2>
+    <p class="contact__paragraph">
+      Fill out the form and our team will reach out to schedule a call and walk you through the
+      opportunity in your area.
+    </p>
+
+    <dl class="contact__info">
+      @for (info of contactInfo; track info.label) {
+        <div class="contact__info-row">
+          <dt>{{ info.label }}</dt>
+          <dd>{{ info.value }}</dd>
+        </div>
+      }
+    </dl>
+
+    <ul class="contact__social">
+      @for (link of socialLinks; track link.label) {
+        <li>
+          <a
+            [href]="link.href"
+            class="contact__social-link"
+            [attr.aria-label]="link.label"
+            (click)="onSocialClick($event, link)"
+          >
+            <svg class="contact__social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <use [attr.href]="'assets/icons/icon-sprite.svg#' + link.icon" />
+            </svg>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <form class="contact__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    @if (submitted()) {
+      <p class="contact__success" role="status">Thanks — we'll be in touch shortly.</p>
+    }
+
+    <label class="contact__field">
+      <span class="contact__label">Full name</span>
+      <input class="contact__input" type="text" formControlName="fullName" placeholder="Jordan Rivera" />
+    </label>
+
+    <div class="contact__field-row">
+      <label class="contact__field">
+        <span class="contact__label">Email</span>
+        <input class="contact__input" type="email" formControlName="email" placeholder="jordan@email.com" />
+      </label>
+
+      <label class="contact__field">
+        <span class="contact__label">Phone</span>
+        <input class="contact__input" type="tel" formControlName="phone" placeholder="(555) 000-0000" />
+      </label>
+    </div>
+
+    <label class="contact__field">
+      <span class="contact__label">Market</span>
+      <input class="contact__input" type="text" formControlName="market" placeholder="e.g. Boise, ID" />
+    </label>
+
+    <label class="contact__field">
+      <span class="contact__label">Message</span>
+      <textarea
+        class="contact__input contact__input--area"
+        formControlName="message"
+        placeholder="What are you looking for?"
+      ></textarea>
+    </label>
+
+    <nctv-pill-button label="Request a call" [isSubmit]="true" />
+  </form>
+</section>

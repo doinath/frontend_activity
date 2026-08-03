@@ -1,0 +1,29 @@
+<section id="services" class="services" aria-labelledby="services-heading">
+  <div class="services__intro">
+    <nctv-eyebrow-badge label="Go beyond the screens" />
+    <h2 id="services-heading" class="services__heading">
+      A full-scale marketing agency, not just a billboard.
+    </h2>
+    <p class="services__paragraph">
+      Every screen account can grow into a true omni-channel engagement. Work is handled in-house,
+      with reporting and a monthly strategy call built in — so clients see the results and keep
+      raising their spend.
+    </p>
+  </div>
+
+  <ul class="services__grid">
+    @for (category of categories; track category.tag) {
+      <li class="services__card">
+        <span class="services__tag">
+          <span class="services__tag-dot" aria-hidden="true"></span>
+          {{ category.tag }}
+        </span>
+        <ul class="services__list">
+          @for (service of category.services; track service) {
+            <li>{{ service }}</li>
+          }
+        </ul>
+      </li>
+    }
+  </ul>
+</section>

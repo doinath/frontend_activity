@@ -1,0 +1,37 @@
+<section id="hero" class="hero" aria-label="Introduction">
+  <img
+    class="hero__ring"
+    ngSrc="assets/compass.png"
+    width="354"
+    height="354"
+    priority
+    alt=""
+    aria-hidden="true"
+  />
+
+  <div class="hero__content">
+    <nctv-eyebrow-badge label="Indoor digital billboard dealerships" />
+
+    <h1 class="hero__heading">
+      Advertising that lives where your <span class="hero__heading--accent">community</span> already
+      stands in line.
+    </h1>
+
+    <p class="hero__paragraph">
+      Own and operate a network of indoor digital billboards across your town — gyms, clinics,
+      restaurants, salons — with a proven playbook, low overhead, and a business built to layer on
+      new revenue as it grows.
+    </p>
+
+    <div class="hero__actions">
+      <nctv-pill-button label="See how the model works" href="#model" />
+      <nctv-pill-button label="Book a call" href="#contact" variant="outline" />
+    </div>
+
+    <div class="hero__stats">
+      @for (stat of stats; track stat.label) {
+        <nctv-stat-card [stat]="stat" variant="inline" />
+      }
+    </div>
+  </div>
+</section>
