@@ -1,5 +1,30 @@
 <header class="site-header">
   <div class="site-header__inner">
     <nctv-logo />
+
+    <button
+      type="button"
+      class="site-header__menu-toggle"
+      [class.site-header__menu-toggle--open]="isMenuOpen()"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-controls="site-header-menu"
+      aria-label="Toggle section menu"
+      (click)="toggleMenu()"
+    >
+      <span class="site-header__menu-bar"></span>
+      <span class="site-header__menu-bar"></span>
+      <span class="site-header__menu-bar"></span>
+    </button>
   </div>
+
+  @if (isMenuOpen()) {
+    <div class="site-header__backdrop" (click)="closeMenu()"></div>
+    <nav id="site-header-menu" class="site-header__menu" aria-label="Section navigation">
+      @for (link of links(); track link.path) {
+        <a class="site-header__menu-link" [href]="link.path" (click)="closeMenu()">
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+  }
 </header>

@@ -19,11 +19,21 @@
 }
 
 .services__card {
-  @apply flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 transition-colors duration-300;
+  @apply flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 transition-[transform,border-color] duration-300;
 }
 
 .services__card:hover {
-  @apply border-border-strong;
+  @apply -translate-y-1 scale-[1.03] border-accent/40;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services__card {
+    @apply transition-none;
+  }
+
+  .services__card:hover {
+    @apply translate-y-0 scale-100;
+  }
 }
 
 .services__icon {

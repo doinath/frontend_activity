@@ -3,5 +3,50 @@
 }
 
 .site-header__inner {
-  @apply mx-auto flex h-[103px] max-w-[1180px] items-center justify-center px-8;
+  @apply relative mx-auto grid h-[103px] max-w-[1180px] grid-cols-[1fr_auto_1fr] items-center px-8;
+}
+
+nctv-logo {
+  @apply col-start-2 justify-self-center;
+}
+
+.site-header__menu-toggle {
+  @apply col-start-3 flex size-11 shrink-0 flex-col items-center justify-center justify-self-end gap-1.5 rounded-full border border-border transition-colors lg:hidden;
+}
+
+.site-header__menu-toggle:hover {
+  @apply border-border-strong;
+}
+
+.site-header__menu-bar {
+  @apply h-[1.5px] w-5 rounded-full bg-heading transition-transform duration-200;
+}
+
+.site-header__menu-toggle--open .site-header__menu-bar:nth-child(1) {
+  @apply translate-y-[6.5px] rotate-45;
+}
+
+.site-header__menu-toggle--open .site-header__menu-bar:nth-child(2) {
+  @apply opacity-0;
+}
+
+.site-header__menu-toggle--open .site-header__menu-bar:nth-child(3) {
+  @apply -translate-y-[6.5px] -rotate-45;
+}
+
+.site-header__backdrop {
+  @apply fixed inset-0 z-20 bg-bg/70 backdrop-blur-sm lg:hidden;
+}
+
+.site-header__menu {
+  @apply absolute inset-x-0 top-full z-30 flex flex-col gap-1 border-b border-border bg-bg/95 p-4 lg:hidden;
+}
+
+.site-header__menu-link {
+  @apply rounded-lg px-4 py-3 text-[15px] font-medium text-heading transition-colors;
+}
+
+.site-header__menu-link:hover,
+.site-header__menu-link:focus-visible {
+  @apply bg-surface text-accent;
 }

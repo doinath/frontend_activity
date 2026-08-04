@@ -34,6 +34,7 @@ const RAIL_PADDING_PX = 6;
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(window:scroll)': 'onWindowScroll()',
+    '(window:resize)': 'onWindowScroll()',
   },
 })
 export class SectionNav implements OnInit, OnDestroy {
@@ -73,8 +74,9 @@ export class SectionNav implements OnInit, OnDestroy {
 
   /**
    * @description Recomputes which section is closest to the viewport center
-   * on every scroll tick, updates the active-path signal, and re-reveals the
-   * pill label for another auto-hide cycle.
+   * on every scroll tick (and on window resize/orientation change, so the
+   * pill doesn't go stale after a layout shift), updates the active-path
+   * signal, and re-reveals the pill label for another auto-hide cycle.
    */
   protected onWindowScroll(): void {
     const viewportCenter = window.innerHeight / 2;

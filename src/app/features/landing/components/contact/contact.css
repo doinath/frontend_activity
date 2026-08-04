@@ -35,11 +35,16 @@
 }
 
 .contact__social-link {
-  @apply flex size-8 items-center justify-center rounded-full border border-border-strong text-body;
+  @apply flex size-11 items-center justify-center rounded-full border border-border-strong text-body transition-colors;
+}
+
+.contact__social-link:hover,
+.contact__social-link:focus-visible {
+  @apply border-accent text-accent;
 }
 
 .contact__social-icon {
-  @apply size-3.5;
+  @apply size-4;
 }
 
 .contact__form {
@@ -63,7 +68,7 @@
 }
 
 .contact__input {
-  @apply rounded border border-border-strong bg-white/[0.04] px-4 py-3 text-[14.5px] text-heading placeholder:text-heading/55;
+  @apply rounded border border-border-strong bg-white/[0.04] px-4 py-3 text-base text-heading placeholder:text-heading/55 sm:text-[14.5px];
 }
 
 .contact__input--area {

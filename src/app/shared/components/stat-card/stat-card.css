@@ -3,7 +3,21 @@
 }
 
 .stat--card {
-  @apply items-center justify-center gap-2 rounded-[25px] border border-border-soft bg-surface p-6 text-center;
+  @apply items-center justify-center gap-2 rounded-[25px] border border-border-soft bg-surface p-6 text-center transition-[transform,border-color] duration-300;
+}
+
+.stat--card:hover {
+  @apply -translate-y-1 scale-[1.03] border-accent/40;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat--card {
+    @apply transition-none;
+  }
+
+  .stat--card:hover {
+    @apply translate-y-0 scale-100;
+  }
 }
 
 .stat__value {

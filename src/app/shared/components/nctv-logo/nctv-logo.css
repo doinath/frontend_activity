@@ -1,3 +1,7 @@
+.logo-link {
+  @apply inline-block;
+}
+
 .logo {
   @apply h-12 w-auto object-contain;
 }
