@@ -1,9 +1,9 @@
 .hero {
-  @apply relative overflow-hidden bg-bg px-8 py-24;
+  @apply relative mx-auto max-w-[1180px] overflow-hidden bg-bg px-8 py-24 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10;
 }
 
 .hero__ring {
-  @apply pointer-events-none hidden size-56 opacity-90 lg:absolute lg:right-6 lg:top-1/2 lg:block lg:-translate-y-1/2 xl:size-72;
+  @apply pointer-events-none hidden size-56 opacity-90 lg:order-2 lg:mt-4 lg:block lg:justify-self-center xl:mt-6 xl:size-72;
   animation: hero-ring-spin 18s linear infinite;
   /* Mask the source PNG's alpha shape and fill it with the brand gradient
      instead of its baked-in green. */
@@ -20,16 +20,12 @@
 
 @keyframes hero-ring-spin {
   to {
-    transform: translateY(-50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-.hero__inner {
-  @apply mx-auto max-w-[1180px];
-}
-
 .hero__content {
-  @apply relative z-10 flex max-w-[700px] flex-col items-start gap-6;
+  @apply relative z-10 flex max-w-[700px] flex-col items-start gap-6 lg:order-1;
 }
 
 .hero__heading {
