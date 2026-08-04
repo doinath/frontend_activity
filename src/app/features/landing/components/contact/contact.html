@@ -41,13 +41,31 @@
 
     <label class="contact__field">
       <span class="contact__label">Full name</span>
-      <input class="contact__input" type="text" formControlName="fullName" placeholder="Jordan Rivera" />
+      <input
+        class="contact__input"
+        [class.contact__input--error]="isInvalid('fullName')"
+        type="text"
+        formControlName="fullName"
+        placeholder="Jordan Rivera"
+      />
+      @if (isInvalid('fullName')) {
+        <span class="contact__error">{{ getErrorMessage('fullName') }}</span>
+      }
     </label>
 
     <div class="contact__field-row">
       <label class="contact__field">
         <span class="contact__label">Email</span>
-        <input class="contact__input" type="email" formControlName="email" placeholder="jordan@email.com" />
+        <input
+          class="contact__input"
+          [class.contact__input--error]="isInvalid('email')"
+          type="email"
+          formControlName="email"
+          placeholder="jordan@email.com"
+        />
+        @if (isInvalid('email')) {
+          <span class="contact__error">{{ getErrorMessage('email') }}</span>
+        }
       </label>
 
       <label class="contact__field">
@@ -58,7 +76,16 @@
 
     <label class="contact__field">
       <span class="contact__label">Market</span>
-      <input class="contact__input" type="text" formControlName="market" placeholder="e.g. Boise, ID" />
+      <input
+        class="contact__input"
+        [class.contact__input--error]="isInvalid('market')"
+        type="text"
+        formControlName="market"
+        placeholder="e.g. Boise, ID"
+      />
+      @if (isInvalid('market')) {
+        <span class="contact__error">{{ getErrorMessage('market') }}</span>
+      }
     </label>
 
     <label class="contact__field">
@@ -76,6 +103,7 @@
       color="custom"
       customColor="#92c74d"
       rounded="full"
+      customHeight="52px"
       [fullWidth]="true"
       [loading]="isSubmitting()"
     >

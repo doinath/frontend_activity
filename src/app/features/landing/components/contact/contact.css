@@ -74,3 +74,11 @@
 .contact__input--area {
   @apply min-h-[95px] resize-y;
 }
+
+.contact__input--error {
+  @apply border-[#ef4444];
+}
+
+.contact__error {
+  @apply text-xs text-[#ef4444];
+}

@@ -53,6 +53,37 @@ export class Contact {
   }
 
   /**
+   * @description Whether a form control should currently display its error
+   * state — invalid, and the user has either blurred or edited it.
+   * @param controlName Name of the form control to check.
+   * @returns True if the control is invalid and has been touched or dirtied.
+   */
+  protected isInvalid(controlName: keyof ContactFormValue): boolean {
+    const control = this.form.get(controlName);
+    return !!control && control.invalid && (control.touched || control.dirty);
+  }
+
+  /**
+   * @description Resolves a human-readable validation message for whichever
+   * validator is currently failing on a control.
+   * @param controlName Name of the form control to check.
+   * @returns The message to display, or an empty string if none applies.
+   */
+  protected getErrorMessage(controlName: keyof ContactFormValue): string {
+    const errors = this.form.get(controlName)?.errors;
+    if (!errors) {
+      return '';
+    }
+    if (errors['required']) {
+      return 'This field is required.';
+    }
+    if (errors['email']) {
+      return 'Enter a valid email address.';
+    }
+    return '';
+  }
+
+  /**
    * @description Intercepts the LinkedIn icon so it shows the loading
    * overlay before handing off; other social icons navigate normally.
    * @param event The click event, prevented only for the LinkedIn icon.

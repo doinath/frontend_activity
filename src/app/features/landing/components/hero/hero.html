@@ -1,49 +1,50 @@
 <section id="hero" class="hero" aria-label="Introduction">
   <div class="hero__ring" aria-hidden="true"></div>
 
-  <div class="hero__content">
-    <nctv-eyebrow-badge label="Indoor digital billboard dealerships" />
+  <div class="hero__inner">
+    <div class="hero__content">
+      <nctv-eyebrow-badge label="Indoor digital billboard dealerships" />
 
-    <h1 class="hero__heading">
-      Advertising that lives where your <span class="hero__heading--accent">community</span> already
-      stands in line.
-    </h1>
+      <h1 class="hero__heading">
+        Advertising that lives where your <span class="hero__heading--accent">community</span> already
+        stands in line.
+      </h1>
 
-    <p class="hero__paragraph">
-      Own and operate a network of indoor digital billboards across your town — gyms, clinics,
-      restaurants, salons — with a proven playbook, low overhead, and a business built to layer on
-      new revenue as it grows.
-    </p>
+      <p class="hero__paragraph">
+        Own and operate a network of indoor digital billboards across your town — gyms, clinics,
+        restaurants, salons — with a proven playbook, low overhead, and a business built to layer on
+        new revenue as it grows.
+      </p>
 
-    <div class="hero__actions">
-      <ntv-button
-        variant="primary"
-        color="custom"
-        customColor="#92c74d"
-        rounded="full"
-        size="lg"
-        (buttonClick)="scrollToSection('#model')"
-      >
-        See how the model works
-      </ntv-button>
+      <div class="hero__actions">
+        <ntv-button
+          variant="primary"
+          color="custom"
+          customColor="#92c74d"
+          rounded="full"
+          size="lg"
+          (buttonClick)="scrollToSection('#model')"
+        >
+          See how the model works
+        </ntv-button>
 
-      <ntv-button
-        variant="primary"
-        color="custom"
-        
-        customColor="#92c74d"
-        rounded="full"
-        size="lg"
-        (buttonClick)="scrollToSection('#contact')"
-      >
-        Book a call
-      </ntv-button>
-    </div>
+        <ntv-button
+          variant="primary"
+          color="custom"
+          customColor="#92c74d"
+          rounded="full"
+          size="lg"
+          (buttonClick)="scrollToSection('#contact')"
+        >
+          Book a call
+        </ntv-button>
+      </div>
 
-    <div class="hero__stats">
-      @for (stat of stats; track stat.label) {
-        <nctv-stat-card [stat]="stat" variant="inline" />
-      }
+      <div class="hero__stats">
+        @for (stat of stats; track stat.label) {
+          <nctv-stat-card [stat]="stat" variant="inline" />
+        }
+      </div>
     </div>
   </div>
 </section>
