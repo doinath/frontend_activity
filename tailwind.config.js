@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './src/**/*.{html,ts}',
-    './node_modules/@ntv360/component-pantry/**/*.{html,ts}'
+    './node_modules/@ntv360/component-pantry/**/*.{html,ts,mjs,js}'
   ],
   theme: {
     extend: {
