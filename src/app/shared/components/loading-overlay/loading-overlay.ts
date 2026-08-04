@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject, Signal } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
 import { NavigationLoaderService } from '../../../core/services/navigation-loader.service';
 
 /**
@@ -9,7 +8,7 @@ import { NavigationLoaderService } from '../../../core/services/navigation-loade
  */
 @Component({
   selector: 'nctv-loading-overlay',
-  imports: [NgOptimizedImage],
+  imports: [],
   templateUrl: './loading-overlay.html',
   styleUrl: './loading-overlay.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

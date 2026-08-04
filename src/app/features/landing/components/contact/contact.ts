@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Button } from '@ntv360/component-pantry';
 import { NavigationLoaderService } from '../../../../core/services/navigation-loader.service';
 import { EyebrowBadge } from '../../../../shared/components/eyebrow-badge/eyebrow-badge';
-import { PillButton } from '../../../../shared/components/pill-button/pill-button';
 import { ContactService } from '../../../../core/services/contact.service';
 import { ContactInfo } from '../../../../shared/interfaces/contact-info.interface';
 import { SocialLink } from '../../../../shared/interfaces/social-link.interface';
@@ -12,7 +12,7 @@ import { CONTACT_INFO, CONTACT_SOCIAL_LINKS } from '../../constants/contact-info
 /** @description "Contact" frame: contact details + the "Request a call" form. */
 @Component({
   selector: 'nctv-contact',
-  imports: [EyebrowBadge, PillButton, ReactiveFormsModule],
+  imports: [EyebrowBadge, Button, ReactiveFormsModule],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

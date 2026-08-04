@@ -1,13 +1,5 @@
 <section id="hero" class="hero" aria-label="Introduction">
-  <img
-    class="hero__ring"
-    ngSrc="assets/compass.png"
-    width="354"
-    height="354"
-    priority
-    alt=""
-    aria-hidden="true"
-  />
+  <div class="hero__ring" aria-hidden="true"></div>
 
   <div class="hero__content">
     <nctv-eyebrow-badge label="Indoor digital billboard dealerships" />
@@ -24,8 +16,28 @@
     </p>
 
     <div class="hero__actions">
-      <nctv-pill-button label="See how the model works" href="#model" />
-      <nctv-pill-button label="Book a call" href="#contact" variant="outline" />
+      <ntv-button
+        variant="primary"
+        color="custom"
+        customColor="#92c74d"
+        rounded="full"
+        size="lg"
+        (buttonClick)="scrollToSection('#model')"
+      >
+        See how the model works
+      </ntv-button>
+
+      <ntv-button
+        variant="primary"
+        color="custom"
+        
+        customColor="#92c74d"
+        rounded="full"
+        size="lg"
+        (buttonClick)="scrollToSection('#contact')"
+      >
+        Book a call
+      </ntv-button>
     </div>
 
     <div class="hero__stats">

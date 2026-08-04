@@ -7,7 +7,7 @@
 }
 
 .section-nav__pill {
-  @apply pointer-events-none absolute right-[calc(100%+12px)] -translate-y-1/2 translate-x-3 whitespace-nowrap rounded-pill bg-accent px-4 py-1.5 text-[13px] font-semibold text-[#141f38] opacity-0 transition-[opacity,transform] duration-300 ease-out;
+  @apply pointer-events-none absolute right-[calc(100%+12px)] -translate-y-1/2 translate-x-3 whitespace-nowrap rounded-pill bg-accent px-4 py-1.5 text-[13px] font-semibold text-[#141f38] opacity-0 transition-[opacity,transform] duration-100 ease-out;
 }
 
 .section-nav__pill--visible {

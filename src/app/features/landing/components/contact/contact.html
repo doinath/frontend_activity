@@ -70,6 +70,16 @@
       ></textarea>
     </label>
 
-    <nctv-pill-button label="Request a call" [isSubmit]="true" />
+    <ntv-button
+      type="submit"
+      variant="primary"
+      color="custom"
+      customColor="#92c74d"
+      rounded="full"
+      [fullWidth]="true"
+      [loading]="isSubmitting()"
+    >
+      Request a call
+    </ntv-button>
   </form>
 </section>
