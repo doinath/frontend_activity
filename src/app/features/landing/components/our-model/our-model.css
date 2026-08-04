@@ -6,8 +6,24 @@
   @apply grid grid-cols-1 items-center gap-10 md:grid-cols-2;
 }
 
+.model__image-wrap {
+  @apply relative;
+}
+
 .model__image {
-  @apply h-auto w-full rounded-[26px] object-cover shadow-[0_0_2px_5px_theme(colors.accent)];
+  @apply h-auto w-full rounded-[26px] border border-border object-cover shadow-[0_24px_60px_-24px_rgba(0,0,0,0.65)];
+}
+
+.model__image-badge {
+  @apply absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-border bg-surface/90 px-4 py-2 backdrop-blur-sm;
+}
+
+.model__image-badge-value {
+  @apply font-display text-lg font-semibold leading-none text-accent;
+}
+
+.model__image-badge-label {
+  @apply text-xs leading-none text-muted;
 }
 
 .model__copy {
@@ -15,15 +31,27 @@
 }
 
 .model__heading {
-  @apply font-display text-[32px] font-semibold leading-tight tracking-tight text-accent;
+  @apply font-display text-[32px] font-semibold leading-tight tracking-tight text-heading;
+}
+
+.model__heading--accent {
+  @apply text-accent;
 }
 
 .model__paragraph {
-  @apply text-[15.5px] leading-[1.6] text-white;
+  @apply text-[15.5px] leading-[1.6] text-body;
 }
 
-.model__paragraph--accent {
-  @apply text-accent;
+.model__tags {
+  @apply flex flex-wrap gap-2;
+}
+
+.model__tag {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-body;
+}
+
+.model__tag::before {
+  @apply size-1.5 shrink-0 rounded-full bg-accent content-[''];
 }
 
 .model__journey {
@@ -39,7 +67,7 @@
 }
 
 .model__journey .model__paragraph {
-  @apply max-w-[420px] text-[16.5px] text-white;
+  @apply max-w-[420px] text-[16.5px] text-body;
 }
 
 .model__journey-grid {
