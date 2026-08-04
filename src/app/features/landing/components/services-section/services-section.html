@@ -2,19 +2,38 @@
   <div class="services__intro">
     <nctv-eyebrow-badge label="Go beyond the screens" />
     <h2 id="services-heading" class="services__heading">
-      A full-scale marketing agency, not just a billboard.
+      A full-scale marketing agency, <span class="services__heading--accent">not just a billboard</span>.
     </h2>
-    <p class="services__paragraph">
-      Every screen account can grow into a true omni-channel engagement. Work is handled in-house,
-      with reporting and a monthly strategy call built in — so clients see the results and keep
-      raising their spend.
-    </p>
   </div>
 
   <ul class="services__grid">
-    @for (category of categories; track category.tag) {
+    @for (category of categories; track category.tag; let i = $index) {
       <li class="services__card">
+        <span class="services__icon" aria-hidden="true">
+          @switch (i) {
+            @case (0) {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            }
+            @case (1) {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="12" cy="12" r="1" />
+              </svg>
+            }
+            @default {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 L14.2 9.2 L21.5 11 L14.2 12.8 L12 20 L9.8 12.8 L2.5 11 L9.8 9.2 Z" />
+              </svg>
+            }
+          }
+        </span>
         <span class="services__tag">
+          <span class="services__tag-index">{{ formatIndex(i) }}</span>
           <span class="services__tag-dot" aria-hidden="true"></span>
           {{ category.tag }}
         </span>

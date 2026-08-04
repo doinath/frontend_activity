@@ -7,11 +7,11 @@
 }
 
 .services__heading {
-  @apply font-display text-[38px] font-semibold leading-tight tracking-tight text-accent;
+  @apply font-display text-[38px] font-semibold leading-tight tracking-tight text-heading;
 }
 
-.services__paragraph {
-  @apply text-[16.5px] leading-[1.6] text-white;
+.services__heading--accent {
+  @apply text-accent;
 }
 
 .services__grid {
@@ -19,11 +19,27 @@
 }
 
 .services__card {
-  @apply flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6;
+  @apply flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 transition-colors duration-300;
+}
+
+.services__card:hover {
+  @apply border-border-strong;
+}
+
+.services__icon {
+  @apply flex size-11 items-center justify-center rounded-xl border border-border bg-bg/60 text-accent;
+}
+
+.services__icon svg {
+  @apply size-5;
 }
 
 .services__tag {
   @apply inline-flex items-center gap-2 rounded-pill border border-border bg-bg/70 px-3 py-1.5 font-mono text-[10px] tracking-[0.12em] text-accent;
+}
+
+.services__tag-index {
+  @apply text-muted;
 }
 
 .services__tag-dot {
@@ -31,5 +47,9 @@
 }
 
 .services__list {
-  @apply flex flex-col items-center gap-2.5 text-[15px] font-semibold text-white;
+  @apply flex w-full flex-col items-center divide-y divide-border-soft text-[15px] font-medium text-heading;
+}
+
+.services__list li {
+  @apply w-full py-2.5 first:pt-0 last:pb-0;
 }
