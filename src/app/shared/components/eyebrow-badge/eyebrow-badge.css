@@ -4,6 +4,24 @@
 
 .eyebrow__dot {
   @apply size-1.5 rounded-full bg-accent shrink-0;
+  animation: eyebrow-dot-glow 2.2s ease-in-out infinite;
+}
+
+@keyframes eyebrow-dot-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 4px 1px rgba(146, 199, 77, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 10px 3px rgba(146, 199, 77, 0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow__dot {
+    animation: none;
+    box-shadow: 0 0 6px 1px rgba(146, 199, 77, 0.5);
+  }
 }
 
 .eyebrow__label {

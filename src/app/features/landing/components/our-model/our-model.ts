@@ -20,8 +20,12 @@ import { HERO_STATS } from '../../constants/hero-stats.constant';
 export class OurModel {
   protected readonly journeyStats: Stat[] = JOURNEY_STATS;
 
-  /** Screens stat reused from the hero as the photo's overlay badge, so the figure has one source of truth. */
-  protected readonly screensStat: Stat = HERO_STATS[0];
+  /**
+   * Photo badge stat — reuses the hero's screens-live figure as its value
+   * (one source of truth for the number) but keeps its own shorter label,
+   * since "Screens live nationwide" doesn't fit the compact badge.
+   */
+  protected readonly screensStat: Stat = { value: HERO_STATS[0].value, label: 'Screens live' };
 
   // TODO: self-host this photo under public/images/ before shipping —
   // the Figma-hosted URL below expires ~7 days after export.

@@ -20,6 +20,12 @@ const DOT_SIZE_PX = 38;
 const DOT_GAP_PX = 4;
 const RAIL_PADDING_PX = 6;
 
+/** Sticky header height (px) — kept in sync with site-header.css — so a scrolled-to section's heading doesn't land underneath it. */
+const HEADER_OFFSET_PX = 103;
+
+/** How long the hand-rolled scroll-to-section animation runs, in milliseconds. */
+const SCROLL_DURATION_MS = 600;
+
 /**
  * @description Sticky rail of section shortcuts (Home/Model/Services/
  * Podcast/Contact) that highlights the section currently in view. Mirrors
@@ -62,9 +68,13 @@ export class SectionNav implements OnInit, OnDestroy {
     return RAIL_PADDING_PX + index * (DOT_SIZE_PX + DOT_GAP_PX) + DOT_SIZE_PX / 2;
   });
 
-  /** @description Starts the initial auto-hide countdown when the rail mounts. */
+  /**
+   * @description Establishes the initial active section (so the pill mounts
+   * and fades in immediately, without waiting on the user's first scroll)
+   * and starts the auto-hide countdown.
+   */
   public ngOnInit(): void {
-    this.scheduleAutoHide();
+    this.onWindowScroll();
   }
 
   /** @description Clears any pending auto-hide timer so it doesn't leak past destroy. */
@@ -116,5 +126,44 @@ export class SectionNav implements OnInit, OnDestroy {
       clearTimeout(this.hideTimeoutId);
       this.hideTimeoutId = undefined;
     }
+  }
+
+  /**
+   * @description Intercepts a rail dot/pill click and animates the scroll to
+   * the target section by hand via `requestAnimationFrame`, offset by the
+   * sticky header's height so the section heading doesn't land underneath
+   * it. A hand-rolled animation is used deliberately instead of the
+   * browser's native `scrollIntoView({ behavior: 'smooth' })` / CSS
+   * `scroll-behavior: smooth` — several browsers silently downgrade native
+   * smooth scrolling to an instant jump when the OS has reduced-motion
+   * enabled, which defeats the purpose here since the scroll itself is the
+   * whole interaction, not decorative motion layered on top of it.
+   * @param event Click event, prevented so the anchor's default instant
+   * jump doesn't fire before the animated scroll starts.
+   * @param path Section hash (e.g. `#model`) to scroll to.
+   */
+  protected onNavClick(event: Event, path: string): void {
+    event.preventDefault();
+    const target = document.querySelector(path);
+    if (!target) {
+      return;
+    }
+
+    const startY = window.scrollY;
+    const targetY = Math.max(startY + target.getBoundingClientRect().top - HEADER_OFFSET_PX, 0);
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    const step = (now: number): void => {
+      const progress = Math.min((now - startTime) / SCROLL_DURATION_MS, 1);
+      const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
+      window.scrollTo(0, startY + distance * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 }

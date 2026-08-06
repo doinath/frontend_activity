@@ -6,6 +6,7 @@
         [class.section-nav__pill--visible]="isVisible()"
         [style.top.px]="pillOffsetPx()"
         [href]="active.path"
+        (click)="onNavClick($event, active.path)"
       >
         {{ active.label }}
       </a>
@@ -19,6 +20,7 @@
             [class.section-nav__dot--active]="activeLink()?.path === link.path"
             [attr.aria-current]="activeLink()?.path === link.path ? 'true' : null"
             [attr.aria-label]="link.label"
+            (click)="onNavClick($event, link.path)"
           >
             {{ link.icon }}
           </a>

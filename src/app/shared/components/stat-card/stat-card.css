@@ -20,6 +20,10 @@
   }
 }
 
+.stat--badge {
+  @apply flex-row items-center gap-2;
+}
+
 .stat__value {
   @apply font-mono text-[26px] text-heading;
 }
@@ -28,10 +32,18 @@
   @apply text-[34px] text-accent;
 }
 
+.stat--badge .stat__value {
+  @apply font-display text-lg font-semibold leading-none text-accent;
+}
+
 .stat__label {
   @apply text-[12.5px] text-body;
 }
 
 .stat--card .stat__label {
   @apply text-muted;
+}
+
+.stat--badge .stat__label {
+  @apply text-xs leading-none text-muted;
 }

@@ -22,7 +22,9 @@
 
 .hero__ring {
   @apply pointer-events-none hidden size-72 opacity-100 lg:order-2 lg:mt-16 lg:block lg:justify-self-center xl:mt-20 xl:size-96;
-  animation: hero-ring-spin 50s linear infinite;
+  animation:
+    hero-ring-spin 50s linear infinite,
+    hero-ring-glow 3.5s ease-in-out infinite;
   /* Mask the source PNG's alpha shape and fill it with the brand gradient
      instead of its baked-in green. */
   -webkit-mask-image: url('/assets/compass.png');
@@ -39,6 +41,19 @@
 @keyframes hero-ring-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Soft pulsing glow around the compass silhouette. `drop-shadow` (rather
+   than `box-shadow`) follows the masked shape's own alpha edges instead of
+   its square bounding box, so the glow hugs the compass, not a box. */
+@keyframes hero-ring-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 18px rgba(146, 199, 77, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 38px rgba(146, 199, 77, 0.7));
   }
 }
 

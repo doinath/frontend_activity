@@ -1,4 +1,8 @@
-<div class="stat" [class.stat--card]="variant() === 'card'">
-  <p class="stat__value">{{ stat().value }}</p>
+<div
+  class="stat"
+  [class.stat--card]="variant() === 'card'"
+  [class.stat--badge]="variant() === 'badge'"
+>
+  <p class="stat__value">{{ displayValue() }}</p>
   <p class="stat__label">{{ stat().label }}</p>
 </div>
