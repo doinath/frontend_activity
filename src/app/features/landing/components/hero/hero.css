@@ -3,7 +3,7 @@
 }
 
 .hero__ring {
-  @apply pointer-events-none hidden size-56 opacity-90 lg:order-2 lg:mt-4 lg:block lg:justify-self-center xl:mt-6 xl:size-72;
+  @apply pointer-events-none hidden size-72 opacity-75 lg:order-2 lg:mt-16 lg:block lg:justify-self-center xl:mt-20 xl:size-96;
   animation: hero-ring-spin 18s linear infinite;
   /* Mask the source PNG's alpha shape and fill it with the brand gradient
      instead of its baked-in green. */
