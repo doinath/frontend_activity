@@ -1,10 +1,28 @@
 .hero {
-  @apply relative mx-auto max-w-[1180px] overflow-hidden bg-bg px-8 py-24 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10;
+  @apply relative overflow-hidden px-8 py-24;
+  /* Photo of the actual indoor billboard screens as the section's main
+     background. This sits on the full-width outer section (not the
+     max-w-[1180px] inner content wrapper), so the image spans edge-to-edge
+     at every viewport instead of sitting in a centered island with plain
+     page background showing on both sides. `cover` fills the section with
+     no letterboxing; the overlay is a single flat tint (not a top-to-bottom
+     gradient) so the darkening is even across the whole photo. */
+  background-color: #0f0f0f;
+  background-image:
+    linear-gradient(rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0.9)),
+    url('/assets/hero_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero__inner {
+  @apply relative mx-auto max-w-[1180px] lg:grid lg:grid-cols-2 lg:items-start lg:gap-10;
 }
 
 .hero__ring {
-  @apply pointer-events-none hidden size-72 opacity-75 lg:order-2 lg:mt-16 lg:block lg:justify-self-center xl:mt-20 xl:size-96;
-  animation: hero-ring-spin 18s linear infinite;
+  @apply pointer-events-none hidden size-72 opacity-100 lg:order-2 lg:mt-16 lg:block lg:justify-self-center xl:mt-20 xl:size-96;
+  animation: hero-ring-spin 50s linear infinite;
   /* Mask the source PNG's alpha shape and fill it with the brand gradient
      instead of its baked-in green. */
   -webkit-mask-image: url('/assets/compass.png');
