@@ -1,17 +1,45 @@
 .site-header {
-  @apply sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur;
+  @apply sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur transition-shadow duration-300;
+}
+
+.site-header--compact {
+  @apply shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5)];
 }
 
 .site-header__inner {
-  @apply relative mx-auto grid h-[103px] max-w-[1180px] grid-cols-[1fr_auto_1fr] items-center px-8;
+  @apply relative mx-auto grid h-[103px] max-w-[1180px] grid-cols-[1fr_auto_1fr] items-center px-8 transition-[height] duration-300 ease-in-out;
+}
+
+.site-header--compact .site-header__inner {
+  @apply h-[72px];
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header__inner,
+  .site-header__cta {
+    @apply transition-none;
+  }
 }
 
 nctv-logo {
   @apply col-start-2 justify-self-center;
 }
 
+.site-header__actions {
+  @apply col-start-3 flex items-center justify-self-end gap-3;
+}
+
+.site-header__cta {
+  @apply hidden opacity-0 pointer-events-none transition-opacity duration-300 lg:inline-flex;
+}
+
+.site-header__cta--visible {
+  @apply opacity-100 pointer-events-auto;
+}
+
 .site-header__menu-toggle {
-  @apply col-start-3 flex size-11 shrink-0 flex-col items-center justify-center justify-self-end gap-1.5 rounded-full border border-border transition-colors lg:hidden;
+  @apply flex size-11 shrink-0 flex-col items-center justify-center gap-1.5 rounded-full border border-border transition-colors lg:hidden;
 }
 
 .site-header__menu-toggle:hover {
@@ -39,7 +67,7 @@ nctv-logo {
 }
 
 .site-header__menu {
-  @apply absolute inset-x-0 top-full z-30 flex flex-col gap-1 border-b border-border bg-bg/95 p-4 lg:hidden;
+  @apply absolute inset-x-0 top-full z-30 flex flex-col gap-3 border-b border-border bg-bg/95 p-4 lg:hidden;
 }
 
 .site-header__menu-link {

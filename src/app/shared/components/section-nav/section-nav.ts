@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   input,
   InputSignal,
   OnDestroy,
@@ -10,6 +11,7 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
+import { SectionScrollService } from '../../../core/services/section-scroll.service';
 import { NavLink } from '../../interfaces/nav-link.interface';
 
 /** How long the rail stays visible before auto-hiding, in milliseconds. */
@@ -19,12 +21,6 @@ const AUTO_HIDE_DELAY_MS = 2000;
 const DOT_SIZE_PX = 38;
 const DOT_GAP_PX = 4;
 const RAIL_PADDING_PX = 6;
-
-/** Sticky header height (px) — kept in sync with site-header.css — so a scrolled-to section's heading doesn't land underneath it. */
-const HEADER_OFFSET_PX = 103;
-
-/** How long the hand-rolled scroll-to-section animation runs, in milliseconds. */
-const SCROLL_DURATION_MS = 600;
 
 /**
  * @description Sticky rail of section shortcuts (Home/Model/Services/
@@ -45,6 +41,8 @@ const SCROLL_DURATION_MS = 600;
 })
 export class SectionNav implements OnInit, OnDestroy {
   public links: InputSignal<NavLink[]> = input.required<NavLink[]>();
+
+  private readonly sectionScroll = inject(SectionScrollService);
 
   private readonly activePath: WritableSignal<string> = signal<string>('');
   private readonly visible: WritableSignal<boolean> = signal<boolean>(true);
@@ -129,41 +127,14 @@ export class SectionNav implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Intercepts a rail dot/pill click and animates the scroll to
-   * the target section by hand via `requestAnimationFrame`, offset by the
-   * sticky header's height so the section heading doesn't land underneath
-   * it. A hand-rolled animation is used deliberately instead of the
-   * browser's native `scrollIntoView({ behavior: 'smooth' })` / CSS
-   * `scroll-behavior: smooth` — several browsers silently downgrade native
-   * smooth scrolling to an instant jump when the OS has reduced-motion
-   * enabled, which defeats the purpose here since the scroll itself is the
-   * whole interaction, not decorative motion layered on top of it.
+   * @description Intercepts a rail dot/pill click so it smooth-scrolls to
+   * the target section instead of jumping instantly.
    * @param event Click event, prevented so the anchor's default instant
    * jump doesn't fire before the animated scroll starts.
    * @param path Section hash (e.g. `#model`) to scroll to.
    */
   protected onNavClick(event: Event, path: string): void {
     event.preventDefault();
-    const target = document.querySelector(path);
-    if (!target) {
-      return;
-    }
-
-    const startY = window.scrollY;
-    const targetY = Math.max(startY + target.getBoundingClientRect().top - HEADER_OFFSET_PX, 0);
-    const distance = targetY - startY;
-    const startTime = performance.now();
-
-    const step = (now: number): void => {
-      const progress = Math.min((now - startTime) / SCROLL_DURATION_MS, 1);
-      const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
-      window.scrollTo(0, startY + distance * eased);
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
-    };
-
-    requestAnimationFrame(step);
+    this.sectionScroll.scrollTo(path);
   }
 }
