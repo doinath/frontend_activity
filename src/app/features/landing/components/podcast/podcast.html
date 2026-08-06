@@ -35,7 +35,8 @@
           class="podcast__link"
           [class.podcast__link--spotify]="link.platform === 'spotify'"
           [class.podcast__link--apple]="link.platform === 'apple'"
-          (click)="onLinkClick($event, link)"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span class="podcast__link-dot" aria-hidden="true"></span>
           {{ link.label }}

@@ -14,39 +14,6 @@
   @apply max-w-[420px] text-[15px] leading-[1.6] text-body;
 }
 
-.contact__info {
-  @apply mt-2 flex flex-col gap-3;
-}
-
-.contact__info-row {
-  @apply flex items-baseline gap-3.5;
-}
-
-.contact__info-row dt {
-  @apply w-20 shrink-0 font-mono text-[11px] uppercase tracking-[0.06em] text-accent;
-}
-
-.contact__info-row dd {
-  @apply text-[14.5px] text-heading;
-}
-
-.contact__social {
-  @apply mt-2 flex gap-2.5;
-}
-
-.contact__social-link {
-  @apply flex size-11 items-center justify-center rounded-full border border-border-strong text-body transition-colors;
-}
-
-.contact__social-link:hover,
-.contact__social-link:focus-visible {
-  @apply border-accent text-accent;
-}
-
-.contact__social-icon {
-  @apply size-4;
-}
-
 .contact__form {
   @apply flex flex-col gap-4 rounded-lg border border-border bg-surface p-9;
 }

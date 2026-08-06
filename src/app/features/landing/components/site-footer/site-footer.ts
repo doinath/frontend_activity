@@ -1,10 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NctvLogo } from '../../../../shared/components/nctv-logo/nctv-logo';
 import { NavLink } from '../../../../shared/interfaces/nav-link.interface';
-import { FOOTER_NAV_LINKS } from '../../constants/footer-nav-links.constant';
-import { FOOTER_SOCIAL_LINKS } from '../../constants/footer-social-links.constant';
+import { SocialLink } from '../../../../shared/interfaces/social-link.interface';
+import { SECTION_NAV_LINKS } from '../../constants/section-nav-links.constant';
+import { CONTACT_SOCIAL_LINKS } from '../../constants/contact-info.constant';
 
-/** @description "09 - Footer" frame: logo, nav links, legal line, socials. */
+/**
+ * @description "09 - Footer" frame: logo, tagline, section nav, legal line,
+ * and socials. Deliberately doesn't repeat the address/phone/email shown
+ * one section up in Contact — the section-nav links are its own value-add
+ * (a way back up the page once the floating rail/header menu are offscreen).
+ */
 @Component({
   selector: 'nctv-site-footer',
   imports: [NctvLogo],
@@ -13,7 +19,7 @@ import { FOOTER_SOCIAL_LINKS } from '../../constants/footer-social-links.constan
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SiteFooter {
-  protected readonly navLinks: NavLink[] = FOOTER_NAV_LINKS;
-  protected readonly socialLinks: ReadonlyArray<{ label: string; href: string }> = FOOTER_SOCIAL_LINKS;
+  protected readonly navLinks: NavLink[] = SECTION_NAV_LINKS;
+  protected readonly socialLinks: SocialLink[] = CONTACT_SOCIAL_LINKS;
   protected readonly year: number = 2026;
 }
