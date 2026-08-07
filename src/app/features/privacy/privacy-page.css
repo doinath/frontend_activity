@@ -44,20 +44,32 @@
 }
 
 .privacy__toc-list li {
-  @apply flex items-baseline gap-2.5;
+  @apply flex items-baseline gap-2.5 border-l-2 border-transparent pl-2.5 -ml-2.5;
 }
 
 .privacy__toc-num {
   @apply font-mono text-[11px] text-accent/70;
 }
 
-.privacy__toc-list a {
+.privacy__toc-num--active {
+  @apply text-accent;
+}
+
+.privacy__toc-link {
   @apply text-body transition-colors;
 }
 
-.privacy__toc-list a:hover,
-.privacy__toc-list a:focus-visible {
+.privacy__toc-link:hover,
+.privacy__toc-link:focus-visible {
   @apply text-accent;
+}
+
+.privacy__toc-link--active {
+  @apply font-semibold text-accent;
+}
+
+.privacy__toc-item--active {
+  @apply border-l-accent;
 }
 
 .privacy__content {

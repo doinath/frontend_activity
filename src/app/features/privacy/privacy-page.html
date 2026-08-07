@@ -2,7 +2,7 @@
   <div class="privacy__topbar-inner">
     <nctv-logo variant="compact" href="/" ariaLabel="N-Compass TV — back to home" />
 
-    <a class="privacy__back" href="/">
+    <a class="privacy__back" href="/" (click)="onBackClick($event)">
       <svg class="privacy__back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="19" y1="12" x2="5" y2="12" />
         <polyline points="12 19 5 12 12 5" />
@@ -59,16 +59,19 @@
     <nav class="privacy__toc" aria-label="Sections">
       <p class="privacy__toc-title">On this page</p>
       <ol class="privacy__toc-list">
-        <li><span class="privacy__toc-num">01</span><a href="#collection">Collection of Information</a></li>
-        <li><span class="privacy__toc-num">02</span><a href="#use">Use of Your Data and Information</a></li>
-        <li><span class="privacy__toc-num">03</span><a href="#share">How We Share Information</a></li>
-        <li><span class="privacy__toc-num">04</span><a href="#log-files">Log Files</a></li>
-        <li><span class="privacy__toc-num">05</span><a href="#choices">Your Choices / Opt&#8209;Out Options</a></li>
-        <li><span class="privacy__toc-num">06</span><a href="#controllers">Controllers and Responsible Companies</a></li>
-        <li><span class="privacy__toc-num">07</span><a href="#retention">Retention and Security</a></li>
-        <li><span class="privacy__toc-num">08</span><a href="#mailing-list">Mailing List</a></li>
-        <li><span class="privacy__toc-num">09</span><a href="#changes">Notification of Changes</a></li>
-        <li><span class="privacy__toc-num">10</span><a href="#contact">Contact N&#8209;Compass TV</a></li>
+        @for (section of sections; track section.id) {
+          <li [class.privacy__toc-item--active]="isActive(section.id)">
+            <span class="privacy__toc-num" [class.privacy__toc-num--active]="isActive(section.id)">{{ section.num }}</span>
+            <a
+              [href]="'#' + section.id"
+              class="privacy__toc-link"
+              [class.privacy__toc-link--active]="isActive(section.id)"
+              [attr.aria-current]="isActive(section.id) ? 'location' : null"
+            >
+              {{ section.label }}
+            </a>
+          </li>
+        }
       </ol>
     </nav>
 

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 const HEADER_OFFSET_PX = 103;
 
 /** How long the hand-rolled scroll-to-section animation runs, in milliseconds. */
-const SCROLL_DURATION_MS = 350;
+const SCROLL_DURATION_MS = 220;
 
 /**
  * @description Animates the page to an in-page section anchor by hand via
