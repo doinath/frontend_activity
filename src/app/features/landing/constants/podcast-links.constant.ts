@@ -6,5 +6,9 @@ export const PODCAST_LINKS: PodcastLink[] = [
     href: 'https://open.spotify.com/user/21c57tteudoqtqida2myvyz7y',
     platform: 'spotify',
   },
-  { label: 'Listen on Apple', href: 'https://podcasts.apple.com', platform: 'apple' },
+  {
+    label: 'Listen on Apple Music',
+    href: 'https://podcasts.apple.com',
+    platform: 'apple',
+  },
 ];

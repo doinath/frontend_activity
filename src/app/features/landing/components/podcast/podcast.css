@@ -3,11 +3,19 @@
 }
 
 .podcast__player {
-  @apply relative flex aspect-square flex-col justify-end rounded-lg border border-border-strong bg-gradient-to-br from-[#141a14] to-[#080908] p-5;
+  @apply relative flex aspect-square flex-col justify-end overflow-hidden rounded-lg border-2 border-accent bg-[#080908] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.65)] p-5;
+}
+
+.podcast__cover {
+  @apply object-cover;
+}
+
+.podcast__player-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-accent/55 via-accent/15 to-accent/0;
 }
 
 .podcast__tag {
-  @apply absolute left-5 top-5 inline-flex items-center gap-2 rounded-pill border border-border bg-bg/70 px-3 py-1.5 font-mono text-[11px] tracking-[0.08em] text-accent;
+  @apply absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-pill border border-border bg-bg/70 px-3 py-1.5 font-mono text-[11px] tracking-[0.08em] text-accent shadow-[0_4px_14px_rgba(0,0,0,0.4)];
 }
 
 .podcast__tag-dot {
@@ -15,23 +23,23 @@
 }
 
 .podcast__play {
-  @apply absolute left-1/2 top-1/2 flex size-[74px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-accent text-accent;
+  @apply absolute left-1/2 top-1/2 z-10 flex size-[72px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-[#0a0a0a] shadow-[0_0_0_8px_rgba(8,9,8,1),0_6px_16px_rgba(0,0,0,0.55)] transition-all duration-200 hover:scale-110 hover:brightness-110 hover:shadow-[0_0_0_9px_rgba(8,9,8,1),0_8px_20px_rgba(0,0,0,0.6)] active:scale-105;
 }
 
 .podcast__play-icon {
-  @apply size-4 translate-x-0.5;
+  @apply size-7 translate-x-0.5;
 }
 
 .podcast__waveform {
-  @apply flex items-end gap-1;
+  @apply relative z-10 flex items-end gap-1;
 }
 
 .podcast__wave-bar {
-  @apply w-[3px] rounded-sm bg-accent/60;
+  @apply w-[3px] rounded-sm bg-accent/70;
 }
 
 .podcast__caption {
-  @apply mt-2 text-[13px] font-semibold text-white/85;
+  @apply relative z-10 mt-2 text-[13px] font-semibold text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)];
 }
 
 .podcast__copy {
@@ -51,11 +59,20 @@
 }
 
 .podcast__link {
-  @apply inline-flex items-center gap-2.5 rounded-pill border px-6 py-3.5 text-[14.5px] font-semibold text-white;
+  @apply inline-flex items-center gap-2.5 rounded-pill border px-6 py-3.5 text-[14.5px] font-semibold text-white transition-transform duration-150 hover:scale-105;
 }
 
-.podcast__link-dot {
-  @apply size-2 rounded-full bg-white;
+.podcast__link-icon {
+  @apply size-5 shrink-0;
+}
+
+.podcast__link-text {
+  @apply hidden;
+}
+
+.podcast__link:hover .podcast__link-text,
+.podcast__link:focus-visible .podcast__link-text {
+  @apply inline;
 }
 
 .podcast__link--spotify {
@@ -64,8 +81,4 @@
 
 .podcast__link--apple {
   @apply border-[#fa2d4873] bg-[#fa2d48];
-}
-
-.podcast__meta {
-  @apply text-[13px] text-body;
 }

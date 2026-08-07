@@ -19,7 +19,11 @@
 }
 
 .section-nav__dot {
-  @apply flex size-[38px] items-center justify-center rounded-full text-xs font-semibold text-[#9ca6c4] transition-colors;
+  @apply flex size-[38px] items-center justify-center rounded-full text-[#9ca6c4] transition-colors;
+}
+
+.section-nav__dot-icon {
+  @apply size-[18px];
 }
 
 .section-nav__dot--active {

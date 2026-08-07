@@ -1,15 +1,31 @@
 <section id="podcast" class="podcast" aria-labelledby="podcast-heading">
   <article class="podcast__player">
+    <img
+      class="podcast__cover"
+      ngSrc="assets/beyond_the_boards.jpg"
+      fill
+      priority
+      sizes="(min-width: 768px) 50vw, 100vw"
+      alt="Beyond the Board podcast cover art"
+    />
+    <div class="podcast__player-overlay" aria-hidden="true"></div>
+
     <span class="podcast__tag">
       <span class="podcast__tag-dot" aria-hidden="true"></span>
       EPISODE 24
     </span>
 
-    <button type="button" class="podcast__play" aria-label="Play episode 24: Why local screens win">
+    <a
+      class="podcast__play"
+      href="https://open.spotify.com/user/21c57tteudoqtqida2myvyz7y"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Listen to episode 24: Why local screens win on Spotify"
+    >
       <svg class="podcast__play-icon" viewBox="0 0 24 24" aria-hidden="true">
         <use href="assets/icons/icon-sprite.svg#icon-play" />
       </svg>
-    </button>
+    </a>
 
     <div class="podcast__waveform" aria-hidden="true">
       @for (height of waveform; track $index) {
@@ -37,12 +53,24 @@
           [class.podcast__link--apple]="link.platform === 'apple'"
           target="_blank"
           rel="noopener noreferrer"
+          [attr.aria-label]="link.label"
         >
-          <span class="podcast__link-dot" aria-hidden="true"></span>
-          {{ link.label }}
+          @if (link.platform === 'spotify') {
+            <svg class="podcast__link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24 0-.36-.06-.6-.18-1.981-1.2-4.5-1.68-7.021-1.68-1.5 0-2.821.12-4.021.42-.42.06-.6-.12-.6-.48 0-.301.18-.481.6-.601 1.381-.36 2.762-.48 4.202-.48 2.702 0 5.401.54 7.622 1.86.301.18.301.42.301.66-.001.24-.181.48-.483.48zm1.44-3.301c-.301 0-.541-.12-.9-.301-2.101-1.26-5.101-1.98-8.043-1.98-1.681 0-3.361.24-4.923.66-.301.06-.48.18-.6.18-.421 0-.72-.36-.72-.78 0-.42.24-.66.66-.78 1.921-.54 3.782-.78 5.583-.78 3.181 0 6.301.72 8.703 2.16.301.18.541.42.541.9 0 .42-.301.72-.301.72zm.181-3.481c-2.402-1.44-6.242-2.161-9.483-2.161-1.741 0-3.481.24-5.101.72-.301.06-.541.18-.72.18-.541 0-.9-.42-.9-.96 0-.54.301-.9.9-1.08 1.921-.6 4.021-.9 6.243-.9 3.601 0 7.622.78 10.204 2.4.481.301.72.66.72 1.201 0 .601-.481 1.08-1.08 1.08-.361 0-.6-.06-.783-.18z"
+              />
+            </svg>
+          } @else {
+            <svg class="podcast__link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.05 20.28c-.98.95-2.05.86-3.08.38-1.09-.5-2.08-.52-3.24 0-1.44.66-2.21.47-3.06-.38C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.72 3.08.72.79 0 2.24-.87 3.75-.72 3.55.28 5.26 2.85 4.24 6.4-.98 3.38-3.53 5.9-2.07 6.57zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.31-2.1 4.03-3.74 4.25z"
+              />
+            </svg>
+          }
+          <span class="podcast__link-text" aria-hidden="true">{{ link.label }}</span>
         </a>
       }
     </div>
-    <p class="podcast__meta">40+ episodes &middot; new drops every month</p>
   </div>
 </section>
