@@ -1,25 +1,83 @@
 .privacy {
-  @apply mx-auto flex min-h-screen max-w-[720px] flex-col gap-12 px-8 py-12;
+  @apply mx-auto flex max-w-[980px] flex-col px-8 py-12;
+}
+
+.privacy__topbar {
+  @apply sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur;
+}
+
+.privacy__topbar-inner {
+  @apply mx-auto flex h-[72px] max-w-[980px] items-center justify-between gap-4 px-8;
 }
 
 .privacy__back {
-  @apply inline-block self-start;
+  @apply inline-flex items-center gap-2 rounded-pill border border-border-strong px-4 py-2 text-[13.5px] font-semibold text-heading transition-colors;
+}
+
+.privacy__back:hover,
+.privacy__back:focus-visible {
+  @apply border-accent text-accent;
+}
+
+.privacy__back-icon {
+  @apply size-4;
+}
+
+.privacy__masthead {
+  @apply flex max-w-[65ch] flex-col items-start gap-4 border-b border-border pb-12;
+}
+
+.privacy__layout {
+  @apply flex flex-col gap-10 pb-16 pt-12 lg:flex-row lg:items-start lg:gap-14;
+}
+
+.privacy__toc {
+  @apply w-full shrink-0 rounded-lg border border-border bg-surface p-5 lg:sticky lg:top-[88px] lg:w-[240px];
+}
+
+.privacy__toc-title {
+  @apply mb-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted;
+}
+
+.privacy__toc-list {
+  @apply flex flex-col gap-2.5 text-[13.5px] leading-snug;
+}
+
+.privacy__toc-list li {
+  @apply flex items-baseline gap-2.5;
+}
+
+.privacy__toc-num {
+  @apply font-mono text-[11px] text-accent/70;
+}
+
+.privacy__toc-list a {
+  @apply text-body transition-colors;
+}
+
+.privacy__toc-list a:hover,
+.privacy__toc-list a:focus-visible {
+  @apply text-accent;
 }
 
 .privacy__content {
-  @apply flex flex-1 flex-col items-start gap-4 pb-16;
+  @apply flex min-w-0 flex-1 flex-col items-start gap-4;
 }
 
 .privacy__heading {
-  @apply mb-2 font-display text-[32px] font-semibold tracking-tight text-heading;
+  @apply mb-1 font-display text-[36px] font-semibold tracking-tight text-heading;
 }
 
 .privacy__subheading {
-  @apply mt-6 font-display text-[20px] font-semibold tracking-tight text-heading;
+  @apply mt-6 flex scroll-mt-6 items-baseline gap-3 font-display text-[20px] font-semibold tracking-tight text-heading;
 }
 
 .privacy__subheading--minor {
   @apply mt-2 text-[16px];
+}
+
+.privacy__num {
+  @apply font-mono text-[14px] font-normal text-accent;
 }
 
 .privacy__paragraph {
@@ -42,6 +100,18 @@
   @apply text-accent underline underline-offset-2;
 }
 
-.privacy__back-link {
-  @apply mt-6;
+.privacy__callout {
+  @apply mt-2 flex max-w-[65ch] items-start gap-3.5 rounded-lg border border-accent/30 bg-accent/[0.07] px-5 py-4;
+}
+
+.privacy__callout-icon {
+  @apply mt-0.5 size-5 shrink-0 text-accent;
+}
+
+.privacy__callout-text {
+  @apply text-[14.5px] leading-[1.6] text-heading;
+}
+
+.privacy__callout-text strong {
+  @apply text-accent;
 }

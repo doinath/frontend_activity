@@ -17,4 +17,6 @@ export type NctvLogoVariant = 'full' | 'compact';
 })
 export class NctvLogo {
   public variant: InputSignal<NctvLogoVariant> = input<NctvLogoVariant>('full');
+  public href: InputSignal<string> = input<string>('#hero');
+  public ariaLabel: InputSignal<string> = input<string>('N-Compass TV — back to top');
 }
