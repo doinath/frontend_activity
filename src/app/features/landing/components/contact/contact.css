@@ -1,9 +1,14 @@
 .contact {
-  @apply mx-auto grid max-w-[1180px] grid-cols-1 gap-16 px-8 py-24 md:grid-cols-2;
+  @apply relative mx-auto grid max-w-[1180px] grid-cols-1 items-start gap-16 px-8 py-24 md:grid-cols-2;
+}
+
+.contact::before {
+  content: '';
+  @apply absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-border md:block;
 }
 
 .contact__details {
-  @apply flex flex-col items-start gap-4;
+  @apply flex w-full flex-col items-center gap-4 text-center;
 }
 
 .contact__heading {
@@ -11,7 +16,31 @@
 }
 
 .contact__paragraph {
-  @apply max-w-[420px] text-[15px] leading-[1.6] text-body;
+  @apply mx-auto max-w-[400px] text-[15px] leading-[1.6] text-body;
+}
+
+.contact__steps {
+  @apply mt-2 flex w-full max-w-[400px] flex-col gap-5 text-left;
+}
+
+.contact__step {
+  @apply flex items-start gap-4;
+}
+
+.contact__step-number {
+  @apply flex size-8 shrink-0 items-center justify-center rounded-full border border-accent font-mono text-[13px] font-semibold text-accent;
+}
+
+.contact__step-text {
+  @apply flex flex-col gap-0.5;
+}
+
+.contact__step-title {
+  @apply text-[14.5px] font-semibold text-heading;
+}
+
+.contact__step-desc {
+  @apply text-[13.5px] leading-[1.5] text-body;
 }
 
 .contact__form {

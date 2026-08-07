@@ -4,6 +4,8 @@ import { Button } from '@ntv360/component-pantry';
 import { EyebrowBadge } from '../../../../shared/components/eyebrow-badge/eyebrow-badge';
 import { ContactService } from '../../../../core/services/contact.service';
 import { ContactFormValue } from '../../../../shared/interfaces/contact-form-value.interface';
+import { ContactStep } from '../../../../shared/interfaces/contact-step.interface';
+import { CONTACT_STEPS } from '../../constants/contact-steps.constant';
 
 /** @description "Contact" frame: contact details + the "Request a call" form. */
 @Component({
@@ -19,6 +21,7 @@ export class Contact {
 
   protected readonly isSubmitting = this.contactService.isSubmitting;
   protected readonly submitted: WritableSignal<boolean> = signal<boolean>(false);
+  protected readonly steps: ContactStep[] = CONTACT_STEPS;
 
   protected readonly form: FormGroup = this.formBuilder.nonNullable.group({
     fullName: ['', Validators.required],

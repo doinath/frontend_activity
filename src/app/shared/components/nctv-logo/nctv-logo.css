@@ -7,5 +7,8 @@
 }
 
 .logo--compact {
-  @apply h-9;
+  /* The source PNG has ~6px of transparent padding above the visible mark (scales to
+     ~3px at this height), so without this the logo sits visibly lower than text that
+     shares its top edge, e.g. the footer nav column. */
+  @apply -mt-[3px] h-9;
 }

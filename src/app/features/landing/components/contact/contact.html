@@ -6,6 +6,18 @@
       Fill out the form and our team will reach out to schedule a call and walk you through the
       opportunity in your area.
     </p>
+
+    <ol class="contact__steps">
+      @for (step of steps; track step.title; let index = $index) {
+        <li class="contact__step">
+          <span class="contact__step-number" aria-hidden="true">{{ index + 1 }}</span>
+          <div class="contact__step-text">
+            <p class="contact__step-title">{{ step.title }}</p>
+            <p class="contact__step-desc">{{ step.description }}</p>
+          </div>
+        </li>
+      }
+    </ol>
   </div>
 
   <form class="contact__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>

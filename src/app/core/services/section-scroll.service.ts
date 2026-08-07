@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 const HEADER_OFFSET_PX = 103;
 
 /** How long the hand-rolled scroll-to-section animation runs, in milliseconds. */
-const SCROLL_DURATION_MS = 600;
+const SCROLL_DURATION_MS = 350;
 
 /**
  * @description Animates the page to an in-page section anchor by hand via
@@ -21,14 +21,26 @@ const SCROLL_DURATION_MS = 600;
  */
 @Injectable({ providedIn: 'root' })
 export class SectionScrollService {
+  /** rAF handle for the in-flight scroll animation, so a new call can cancel it instead of racing it. */
+  private pendingFrameId: number | undefined;
+
   /**
    * @description Smooth-scrolls the window to the section matching `path`.
+   * Cancels any scroll animation already in flight first — otherwise
+   * spamming a nav link starts multiple overlapping `requestAnimationFrame`
+   * loops that each drive `window.scrollTo` independently, fighting each
+   * other and making the scroll look stuck or delayed.
    * @param path Section hash selector to scroll to, e.g. `#model`.
    */
   public scrollTo(path: string): void {
     const target = document.querySelector(path);
     if (!target) {
       return;
+    }
+
+    if (this.pendingFrameId !== undefined) {
+      cancelAnimationFrame(this.pendingFrameId);
+      this.pendingFrameId = undefined;
     }
 
     const startY = window.scrollY;
@@ -39,13 +51,14 @@ export class SectionScrollService {
     const step = (now: number): void => {
       const progress = Math.min((now - startTime) / SCROLL_DURATION_MS, 1);
       const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
-      window.scrollTo(0, startY + distance * eased);
+      // `behavior: 'auto'` is required here — `styles.scss` sets `scroll-behavior: smooth`
+      // globally, so without it each per-frame jump would get its own native smooth tween
+      // layered on top of this easing, compounding into visible lag.
+      window.scrollTo({ top: startY + distance * eased, left: 0, behavior: 'auto' });
 
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
+      this.pendingFrameId = progress < 1 ? requestAnimationFrame(step) : undefined;
     };
 
-    requestAnimationFrame(step);
+    this.pendingFrameId = requestAnimationFrame(step);
   }
 }
