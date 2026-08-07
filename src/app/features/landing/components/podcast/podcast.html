@@ -20,16 +20,32 @@
       href="https://open.spotify.com/user/21c57tteudoqtqida2myvyz7y"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Listen to episode 24: Why local screens win on Spotify"
+      aria-label="Listen to episode 24: Why local screens win on Spotify (opens in a new tab)"
     >
-      <svg class="podcast__play-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <use href="assets/icons/icon-sprite.svg#icon-play" />
+      <svg
+        class="podcast__play-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" y1="14" x2="21" y2="3" />
       </svg>
     </a>
 
     <div class="podcast__waveform" aria-hidden="true">
       @for (height of waveform; track $index) {
-        <span class="podcast__wave-bar" [style.height.px]="height"></span>
+        <span
+          class="podcast__wave-bar"
+          [style.height.px]="height"
+          [style.animation-delay.ms]="$index * 90"
+          [style.animation-duration.ms]="550 + height * 14"
+        ></span>
       }
     </div>
     <p class="podcast__caption">Why local screens win — 42 min</p>

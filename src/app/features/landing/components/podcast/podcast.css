@@ -27,7 +27,7 @@
 }
 
 .podcast__play-icon {
-  @apply size-7 translate-x-0.5;
+  @apply size-6;
 }
 
 .podcast__waveform {
@@ -35,7 +35,33 @@
 }
 
 .podcast__wave-bar {
-  @apply w-[3px] rounded-sm bg-accent/70;
+  @apply w-[3px] origin-bottom rounded-sm bg-accent/70;
+}
+
+/* Motion only kicks in on interaction — an infinite loop by default would
+   imply audio is playing when the button just links out to Spotify. */
+.podcast__player:hover .podcast__wave-bar,
+.podcast__player:focus-within .podcast__wave-bar {
+  animation-name: podcast-wave-pulse;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes podcast-wave-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .podcast__player:hover .podcast__wave-bar,
+  .podcast__player:focus-within .podcast__wave-bar {
+    animation: none;
+  }
 }
 
 .podcast__caption {
@@ -66,13 +92,22 @@
   @apply size-5 shrink-0;
 }
 
+/* Visible by default — touch devices have no hover, so hiding the label
+   behind :hover left every phone visitor with an unlabeled icon. Only
+   devices with real pointer hover get the icon-only/reveal-on-hover treatment. */
 .podcast__link-text {
-  @apply hidden;
+  @apply inline;
 }
 
-.podcast__link:hover .podcast__link-text,
-.podcast__link:focus-visible .podcast__link-text {
-  @apply inline;
+@media (hover: hover) and (pointer: fine) {
+  .podcast__link-text {
+    @apply hidden;
+  }
+
+  .podcast__link:hover .podcast__link-text,
+  .podcast__link:focus-visible .podcast__link-text {
+    @apply inline;
+  }
 }
 
 .podcast__link--spotify {

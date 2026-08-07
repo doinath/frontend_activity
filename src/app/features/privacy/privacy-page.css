@@ -1,0 +1,47 @@
+.privacy {
+  @apply mx-auto flex min-h-screen max-w-[720px] flex-col gap-12 px-8 py-12;
+}
+
+.privacy__back {
+  @apply inline-block self-start;
+}
+
+.privacy__content {
+  @apply flex flex-1 flex-col items-start gap-4 pb-16;
+}
+
+.privacy__heading {
+  @apply mb-2 font-display text-[32px] font-semibold tracking-tight text-heading;
+}
+
+.privacy__subheading {
+  @apply mt-6 font-display text-[20px] font-semibold tracking-tight text-heading;
+}
+
+.privacy__subheading--minor {
+  @apply mt-2 text-[16px];
+}
+
+.privacy__paragraph {
+  @apply max-w-[65ch] text-[15px] leading-[1.7] text-body;
+}
+
+.privacy__lead {
+  @apply mt-2 max-w-[65ch] text-[14.5px] font-semibold text-heading;
+}
+
+.privacy__list {
+  @apply flex max-w-[65ch] list-disc flex-col gap-2.5 pl-5 text-[15px] leading-[1.7] text-body marker:text-accent;
+}
+
+.privacy__list strong {
+  @apply text-heading;
+}
+
+.privacy__link {
+  @apply text-accent underline underline-offset-2;
+}
+
+.privacy__back-link {
+  @apply mt-6;
+}

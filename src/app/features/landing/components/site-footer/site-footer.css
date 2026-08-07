@@ -55,6 +55,15 @@
   @apply text-[12.5px] text-muted;
 }
 
+.footer__legal-link {
+  @apply text-muted underline underline-offset-2 transition-colors;
+}
+
+.footer__legal-link:hover,
+.footer__legal-link:focus-visible {
+  @apply text-accent;
+}
+
 .footer__social {
   @apply flex gap-2.5;
 }

@@ -4,7 +4,7 @@ import { SocialLink } from '../../../shared/interfaces/social-link.interface';
 export const CONTACT_INFO: ContactInfo[] = [
   { label: 'Address', value: 'Suite 100, Lakewood, CO' },
   { label: 'Phone', value: '(720) 555-0142' },
-  { label: 'Email', value: 'hello@example.com' },
+  { label: 'Email', value: 'ako_deay@gmail.com' },
 ];
 
 export const CONTACT_SOCIAL_LINKS: SocialLink[] = [

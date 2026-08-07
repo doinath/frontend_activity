@@ -50,7 +50,9 @@
     </div>
 
     <div class="footer__bottom">
-      <p class="footer__legal">&copy; N-Compass TV {{ year }} &middot; Privacy Policy</p>
+      <p class="footer__legal">
+        &copy; N-Compass TV {{ year }} &middot; <a class="footer__legal-link" href="/privacy">Privacy Policy</a>
+      </p>
       <ul class="footer__social">
         @for (link of socialLinks; track link.label) {
           <li>

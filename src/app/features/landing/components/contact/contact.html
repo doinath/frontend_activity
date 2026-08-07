@@ -26,13 +26,15 @@
     }
 
     <label class="contact__field">
-      <span class="contact__label">Full name</span>
+      <span class="contact__label">Full name <span class="contact__required" aria-hidden="true">*</span></span>
       <input
         class="contact__input"
         [class.contact__input--error]="isInvalid('fullName')"
         type="text"
         formControlName="fullName"
         placeholder="Jordan Rivera"
+        required
+        aria-required="true"
       />
       @if (isInvalid('fullName')) {
         <span class="contact__error">{{ getErrorMessage('fullName') }}</span>
@@ -41,13 +43,15 @@
 
     <div class="contact__field-row">
       <label class="contact__field">
-        <span class="contact__label">Email</span>
+        <span class="contact__label">Email <span class="contact__required" aria-hidden="true">*</span></span>
         <input
           class="contact__input"
           [class.contact__input--error]="isInvalid('email')"
           type="email"
           formControlName="email"
           placeholder="jordan@email.com"
+          required
+          aria-required="true"
         />
         @if (isInvalid('email')) {
           <span class="contact__error">{{ getErrorMessage('email') }}</span>
@@ -55,19 +59,21 @@
       </label>
 
       <label class="contact__field">
-        <span class="contact__label">Phone</span>
+        <span class="contact__label">Phone <span class="contact__optional">(optional)</span></span>
         <input class="contact__input" type="tel" formControlName="phone" placeholder="(555) 000-0000" />
       </label>
     </div>
 
     <label class="contact__field">
-      <span class="contact__label">Market</span>
+      <span class="contact__label">Market <span class="contact__required" aria-hidden="true">*</span></span>
       <input
         class="contact__input"
         [class.contact__input--error]="isInvalid('market')"
         type="text"
         formControlName="market"
         placeholder="e.g. Boise, ID"
+        required
+        aria-required="true"
       />
       @if (isInvalid('market')) {
         <span class="contact__error">{{ getErrorMessage('market') }}</span>
@@ -75,13 +81,15 @@
     </label>
 
     <label class="contact__field">
-      <span class="contact__label">Message</span>
+      <span class="contact__label">Message <span class="contact__optional">(optional)</span></span>
       <textarea
         class="contact__input contact__input--area"
         formControlName="message"
         placeholder="What are you looking for?"
       ></textarea>
     </label>
+
+    <p class="contact__legend"><span class="contact__required" aria-hidden="true">*</span> Required</p>
 
     <ntv-button
       type="submit"

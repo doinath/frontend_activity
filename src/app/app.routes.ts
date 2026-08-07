@@ -9,4 +9,8 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./features/landing/landing-page').then((m) => m.LandingPage),
   },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./features/privacy/privacy-page').then((m) => m.PrivacyPage),
+  },
 ];
