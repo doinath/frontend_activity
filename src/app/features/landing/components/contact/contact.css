@@ -71,16 +71,31 @@
   @apply font-mono text-[11px] normal-case tracking-normal text-muted;
 }
 
-.contact__legend {
-  @apply -mt-1 text-xs text-muted;
-}
-
 .contact__input {
   @apply rounded border border-border-strong bg-white/[0.04] px-4 py-3 text-base text-heading placeholder:text-heading/55 sm:text-[14.5px];
 }
 
 .contact__input--area {
-  @apply min-h-[95px] resize-y;
+  @apply h-[95px] resize-none overflow-y-auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 238, 248, 0.25) transparent;
+}
+
+.contact__input--area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.contact__input--area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contact__input--area::-webkit-scrollbar-thumb {
+  background-color: rgba(232, 238, 248, 0.25);
+  border-radius: 9999px;
+}
+
+.contact__input--area::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(232, 238, 248, 0.4);
 }
 
 .contact__input--error {
