@@ -16,7 +16,7 @@
   background-repeat: no-repeat;
 }
 
-.hero__inner {
+.hero__inner {  
   @apply relative mx-auto max-w-[1180px] lg:grid lg:grid-cols-2 lg:items-start lg:gap-10;
 }
 
