@@ -128,13 +128,19 @@ export class SectionNav implements OnInit, OnDestroy {
 
   /**
    * @description Intercepts a rail dot/pill click so it smooth-scrolls to
-   * the target section instead of jumping instantly.
+   * the target section instead of jumping instantly. Sets the active-path
+   * state immediately (rather than waiting for `onWindowScroll` to catch up
+   * as the animated scroll progresses) so the clicked dot lights up and the
+   * pill relabels right away instead of lagging behind the ~600ms scroll.
    * @param event Click event, prevented so the anchor's default instant
    * jump doesn't fire before the animated scroll starts.
    * @param path Section hash (e.g. `#model`) to scroll to.
    */
   protected onNavClick(event: Event, path: string): void {
     event.preventDefault();
+    this.activePath.set(path);
+    this.visible.set(true);
+    this.scheduleAutoHide();
     this.sectionScroll.scrollTo(path);
   }
 }

@@ -85,7 +85,7 @@
 }
 
 .podcast__link {
-  @apply inline-flex items-center gap-2.5 rounded-pill border px-6 py-3.5 text-[14.5px] font-semibold text-white transition-transform duration-150 hover:scale-105;
+  @apply inline-flex items-center gap-2.5 rounded-pill border px-6 py-3.5 text-[14.5px] font-semibold text-white transition-transform duration-300 ease-out hover:scale-105;
 }
 
 .podcast__link-icon {
@@ -101,12 +101,12 @@
 
 @media (hover: hover) and (pointer: fine) {
   .podcast__link-text {
-    @apply hidden;
+    @apply inline-block max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,opacity] duration-300 ease-out;
   }
 
   .podcast__link:hover .podcast__link-text,
   .podcast__link:focus-visible .podcast__link-text {
-    @apply inline;
+    @apply max-w-[140px] opacity-100;
   }
 }
 
